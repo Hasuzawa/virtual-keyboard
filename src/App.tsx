@@ -1,6 +1,5 @@
-import { Counter } from './features/counter/Counter';
-import KeyCap from "./component/KeyCap"
 import MacKeyboard from './component/MacKeyboard';
+
 
 function App() {
   return (

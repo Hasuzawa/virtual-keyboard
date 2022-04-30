@@ -10,49 +10,113 @@ const MacKeyboard = () => {
     const keyCapColor = "#28292d"
     const keyCapTextColor = "#c0c1c3"
 
-    const qwer = []
-    for (let comb in ["~`", "!1", "@2", "#3"]) {
-        let content = null
-        if (comb.length === 1) {
-            content = comb
-        } else {
-            content = []
-            for (let char in comb.split("")) {
-                content.push(<span>{char}</span>)
-            }
-        }
-        qwer.push(<KeyCap>{content}</KeyCap>)
+
+    const rowProps = {
+        "columnSeparation": columnSeparation
     }
+
+    const keyCapProps = {
+        "keyCapColor": keyCapColor,
+        "keyCapTextColor": keyCapTextColor
+    }
+
+    const numberRow = splitContent(
+        ["~`", "!1", "@2", "#3", "$4", "%5", "^6", "&7", "*8", "(9", ")0", "_-", "+="]
+    )
+
+    const qwerRow = splitContent(
+        ["Q","W","E","R","T","Y","U","I","O","P","{[","}]","|\\"]
+    )
+
+    const asdfRow = splitContent(
+        ["A", "S", "D", "F", "G", "H", "J", "K", "L", ":;", "\"'"]
+    )
+
+    const zxcvRow = splitContent(
+        ["Z", "X", "C", "V", "B", "N", "M", "<,", ">.", "?/"]
+    )
+
+
+    // for (let comb of ["~`", "!1", "@2", "#3", "$4", "%5", "^6", "&7", "*8", "(9", ")0", "_-", "+="]) {
+    //     let content = null
+    //     if (comb.length === 1) {
+    //         content = comb
+    //     } else {
+    //         content = []
+    //         for (let char of comb.split("")) {
+    //             content.push(<span key={char}>{char}</span>)
+    //         }
+    //     }
+    //     numberRow.push(
+    //     <KeyCap
+    //         key={comb}
+    //         {...keyCapProps}
+    //     >
+    //         {content}
+    //     </KeyCap>
+    //     )
+    // }
+
+    function splitContent(contentArray: string[]) {
+        let rowContent = []
+        let cellContent = null
+        for (let content of contentArray) {
+            if (content.length === 1) {
+                cellContent = content
+            } else {
+                cellContent = []
+                for (let char of content.split("")) {
+                    cellContent.push(<span key={char}>{char}</span>)
+                }
+            }
+            rowContent.push(
+                <KeyCap
+                    key={content}
+                    {...keyCapProps}
+                >
+                    {cellContent}
+                </KeyCap>
+            )
+        }
+        return rowContent
+    }
+
+
 
     return (
         <Keyboard
             keyboardColor={keyboardColor}
-            rowSeparation={8}
+            rowSeparation={rowSeparation}
         >
-            <Row columnSeparation={columnSeparation}>
-                {qwer}
-                {/* {["~`", "!1", "@2", "#3"].map(
-                    (symbols: string) => symbols.split("").map(
-                        (char: string) => 
-                    )
-                )} */}
-                {/* <KeyCap>~</KeyCap>
-                <KeyCap>1</KeyCap>
-                <KeyCap>2</KeyCap>
-                <KeyCap>3</KeyCap>
-                <KeyCap>4</KeyCap>
-                <KeyCap>5</KeyCap>
-                <KeyCap>6</KeyCap>
-                <KeyCap>7</KeyCap>
-                <KeyCap>8</KeyCap>
-                <KeyCap>9</KeyCap>
-                <KeyCap>0</KeyCap>
-                <KeyCap>-</KeyCap>
-                <KeyCap>+</KeyCap>
-                <KeyCap width={98}>delete</KeyCap> */}
+            <Row {...rowProps}>
+                {numberRow}
+                <KeyCap width={98} {...keyCapProps}>delete</KeyCap>
             </Row>
+            <Row {...rowProps}>
+                <KeyCap width={98} {...keyCapProps}>tab</KeyCap>
+                {qwerRow}
+            </Row>
+            <Row {...rowProps}>
+                <KeyCap width={117} {...keyCapProps}>caps lock</KeyCap>
+                {asdfRow}
+                <KeyCap width={117} {...keyCapProps}>return</KeyCap>
+            </Row>
+            <Row {...rowProps}>
+                <KeyCap width={153} {...keyCapProps}>shift</KeyCap>
+                {zxcvRow}
+                <KeyCap width={153} {...keyCapProps}>shift</KeyCap>
+            </Row>
+            <Row {...rowProps}>
+
+                <KeyCap width={81} {...keyCapProps}>command</KeyCap>
+                <KeyCap width={352} {...keyCapProps}></KeyCap>
+                <KeyCap width={81} {...keyCapProps}>command</KeyCap>
+                
+            </Row>
+            
+            {/*
             <Row columnSeparation={columnSeparation}>
-                <KeyCap width={98}>tab</KeyCap>
+                
                 {"QWERTYUIOP".split("").map((char: string) => <KeyCap key={char}>{char}</KeyCap>)}
                 <KeyCap>
                     <span>&#123;</span>
@@ -108,7 +172,7 @@ const MacKeyboard = () => {
                 <KeyCap></KeyCap>
                 <KeyCap></KeyCap>
                 <KeyCap></KeyCap>
-            </Row>
+            </Row> */}
 
         </Keyboard>
     )
