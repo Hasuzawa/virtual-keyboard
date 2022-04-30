@@ -24,18 +24,15 @@ const rawKeyCap = (props: KeyCapProps) => {
     }
 
     return (
-        <div
+        <button
             className={props.className}
             onClick={onClick}
         >
             {content()}
-        </div>
+        </button>
     )
 }
 
-// interface KeyCapProps {
-//     width?: number
-// }
 
 const KeyCap = styled(rawKeyCap)`
     background-color: ${props => props.keyCapColor};
@@ -45,7 +42,7 @@ const KeyCap = styled(rawKeyCap)`
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-
+    border-radius: 6px;
     font-size: 20px;
     /* box-shadow: 0px 0px 0px 0px black; */
 

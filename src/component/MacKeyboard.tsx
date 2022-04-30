@@ -1,14 +1,23 @@
 import Keyboard from "./Keyboard"
 import Row from "./Row"
 import KeyCap from "./KeyCap"
+import { VscTriangleLeft, VscTriangleUp, VscTriangleDown, VscTriangleRight} from "react-icons/vsc"
 
 
 const MacKeyboard = () => {
     const [defaultWidth, defaultHeight] = [64, 64]
-    const [columnSeparation, rowSeparation] = [8, 8]
+    const [columnSeparation, rowSeparation, keyboardPadding] = [8, 8, 12]
     const keyboardColor = "#c0c1c3"
     const keyCapColor = "#28292d"
     const keyCapTextColor = "#c0c1c3"
+    const keyboardBoundaryColor = "#28292d"
+
+    const keyboardProps = {
+        "keyboardColor": keyboardColor,
+        "rowSeparation": rowSeparation,
+        "keyboardPadding": keyboardPadding,
+        "keyboardBoundaryColor": keyboardBoundaryColor
+    }
 
 
     const rowProps = {
@@ -35,27 +44,6 @@ const MacKeyboard = () => {
     const zxcvRow = splitContent(
         ["Z", "X", "C", "V", "B", "N", "M", "<,", ">.", "?/"]
     )
-
-
-    // for (let comb of ["~`", "!1", "@2", "#3", "$4", "%5", "^6", "&7", "*8", "(9", ")0", "_-", "+="]) {
-    //     let content = null
-    //     if (comb.length === 1) {
-    //         content = comb
-    //     } else {
-    //         content = []
-    //         for (let char of comb.split("")) {
-    //             content.push(<span key={char}>{char}</span>)
-    //         }
-    //     }
-    //     numberRow.push(
-    //     <KeyCap
-    //         key={comb}
-    //         {...keyCapProps}
-    //     >
-    //         {content}
-    //     </KeyCap>
-    //     )
-    // }
 
     function splitContent(contentArray: string[]) {
         let rowContent = []
@@ -85,8 +73,7 @@ const MacKeyboard = () => {
 
     return (
         <Keyboard
-            keyboardColor={keyboardColor}
-            rowSeparation={rowSeparation}
+            {...keyboardProps}
         >
             <Row {...rowProps}>
                 {numberRow}
@@ -107,61 +94,27 @@ const MacKeyboard = () => {
                 <KeyCap width={153} {...keyCapProps}>shift</KeyCap>
             </Row>
             <Row {...rowProps}>
+                <KeyCap width={64} {...keyCapProps}>fn</KeyCap>
+                <KeyCap width={64} {...keyCapProps}>control</KeyCap>
+                <KeyCap width={64} {...keyCapProps}>option</KeyCap>
+
+
 
                 <KeyCap width={81} {...keyCapProps}>command</KeyCap>
                 <KeyCap width={352} {...keyCapProps}></KeyCap>
                 <KeyCap width={81} {...keyCapProps}>command</KeyCap>
-                
+                <KeyCap width={64} {...keyCapProps}>option</KeyCap>
+                <KeyCap width={64} {...keyCapProps}><VscTriangleLeft /></KeyCap>
+                <KeyCap width={64} {...keyCapProps}>
+                    <span><VscTriangleUp /></span>
+                    <span><VscTriangleDown /></span>
+                </KeyCap>
+                <KeyCap width={64} {...keyCapProps}><VscTriangleRight /></KeyCap>
+
+
             </Row>
-            
-            {/*
-            <Row columnSeparation={columnSeparation}>
-                
-                {"QWERTYUIOP".split("").map((char: string) => <KeyCap key={char}>{char}</KeyCap>)}
-                <KeyCap>
-                    <span>&#123;</span>
-                    <span>[</span>
-                </KeyCap>
-                <KeyCap>
-                    <span>&#125;</span>
-                    <span>]</span>
-                </KeyCap>
-                <KeyCap>
-                    <span>|</span>
-                    <span>\</span>
-                </KeyCap>
-            </Row>
-            <Row columnSeparation={columnSeparation}>
-                <KeyCap width={117}>caps lock</KeyCap>
-                {"ASDFGHJKL".split("").map((char: string) => <KeyCap key={char}>{char}</KeyCap>)}
-                <KeyCap>
-                    <span>:</span>
-                    <span>;</span>
-                </KeyCap>
-                <KeyCap>
-                    <span>"</span>
-                    <span>'</span>
-                </KeyCap>
-                <KeyCap width={117}>return</KeyCap>
-            </Row>
-            <Row columnSeparation={columnSeparation}>
-                <KeyCap width={153}>shift</KeyCap>
-                {"ZXCVBNM".split("").map((char: string) => <KeyCap key={char}>{char}</KeyCap>)}
-                <KeyCap>
-                    <span>&lt;</span>
-                    <span>,</span>
-                </KeyCap>
-                <KeyCap>
-                    <span>&gt;</span>
-                    <span>.</span>
-                </KeyCap>
-                <KeyCap>
-                    <span>?</span>
-                    <span>/</span>
-                </KeyCap>
-                <KeyCap width={153}>shift</KeyCap>
-            </Row>
-            <Row columnSeparation={columnSeparation}>
+
+            {/* <Row columnSeparation={columnSeparation}>
                 <KeyCap>fn</KeyCap>
                 <KeyCap>control</KeyCap>
                 <KeyCap>option</KeyCap>
