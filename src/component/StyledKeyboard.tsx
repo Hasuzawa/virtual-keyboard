@@ -8,8 +8,8 @@ const StyledKeyboard = styled.div`
 `
 
 const abc = tw.div`
-    bg-red-300
-    
+    // bg-red-300
+
 `
 
 export default StyledKeyboard

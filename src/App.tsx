@@ -1,14 +1,12 @@
-import React from 'react';
 import { Counter } from './features/counter/Counter';
-import StyledKeyCap from "./component/StyledKeyCap"
-import StyledKeyboard from './component/StyledKeyboard';
+import KeyCap from "./component/KeyCap"
+import MacKeyboard from './component/MacKeyboard';
 
 function App() {
   return (
     <div className="App">
         {/* <Counter /> */}
-        <StyledKeyCap />
-        <StyledKeyboard />
+        <MacKeyboard />
     </div>
   );
 }
