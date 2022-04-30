@@ -20,7 +20,6 @@ const KeyCap = (props: KeyCapProps) => {
 const StyledKeyCap = styled(KeyCap)`
     color: red;
     font-size: 80px;
-
 `
 
 
