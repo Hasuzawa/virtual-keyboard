@@ -34,13 +34,14 @@ const rawKeyCap = (props: KeyCapProps) => {
 
 const KeyCap = styled(rawKeyCap)`
     background-color: lightblue;
-    width: ${props => props.width ? props.width : 64}px;  // 64 is default value
+    width: ${props => props.width ?? 64}px;
     height: 64px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
+    font-size: 20px;
 `
 
 

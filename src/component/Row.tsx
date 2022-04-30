@@ -1,10 +1,10 @@
 import styled from "styled-components"
 
 interface RowProps {
+    columnSeparation: number
+
     className?: string
     children?: React.ReactNode | React.ReactNode[]
-    columnSeparation?: number
-    rowSeparation?: number
 }
 
 const rawRow = (props: RowProps) => {
@@ -16,10 +16,10 @@ const rawRow = (props: RowProps) => {
 }
 
 const Row = styled(rawRow)`
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    column-gap: ${props => props.columnSeparation ?? 8}px;
+    column-gap: ${props => props.columnSeparation}px;
 `
 
 
