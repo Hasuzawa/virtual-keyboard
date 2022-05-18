@@ -1,30 +1,33 @@
-import MacKeyboard from "./component/MacKeyboard"
+import MacKeyboard from "./component/legacy/MacKeyboard"
 import styled from "styled-components"
+import DragZone from "./component/DragZone"
+import Display from "./component/Display"
 
 interface AppProps {
-
-    className?: string
-    children?: React.ReactNode
+	className?: string
+	children?: React.ReactNode
 }
 const rawApp = (props: AppProps) => {
-    return (
-        <main className={props.className}>
-            <div>
+	return (
+		<main className={props.className}>
+			{/* <div>
                 <textarea />
             </div>
-            <MacKeyboard />
-        </main>
-    )
+            <MacKeyboard /> */}
+			<Display />
+			<DragZone />
+			<MacKeyboard />
+		</main>
+	)
 }
 
 const App = styled(rawApp)`
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 
-    background-color: lightblue;
+	background-color: #313131;
 `
 
-
-export default App;
+export default App

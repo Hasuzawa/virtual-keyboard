@@ -92,14 +92,14 @@ const MacKeyboard = () => {
 	])
 
 	function splitContent(contentArray: string[]) {
-		let rowContent = []
+		const rowContent = []
 		let cellContent = null
-		for (let content of contentArray) {
+		for (const content of contentArray) {
 			if (content.length === 1) {
 				cellContent = content
 			} else {
 				cellContent = []
-				for (let char of content.split("")) {
+				for (const char of content.split("")) {
 					cellContent.push(<span key={char}>{char}</span>)
 				}
 			}

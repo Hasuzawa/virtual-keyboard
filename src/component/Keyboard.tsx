@@ -1,34 +1,28 @@
 import styled from "styled-components"
+import { StyledComponent } from "../type"
+import { motion } from "framer-motion"
+import { forwardRef } from "react"
 
-import {} from "react-icons"
 
-interface KeyboardProps {
-	keyboardColor: string
-	rowSeparation: number
-	keyboardPadding: number
-	keyboardBoundaryColor: string
 
-	className?: string
-	children?: React.ReactNode
-}
+interface KeyboardProps extends StyledComponent {}
 
-const rawKeyboard = (props: KeyboardProps) => {
-	return <div className={props.className}>{props.children}</div>
-}
 
-const Keyboard = styled(rawKeyboard)`
-	width: fit-content;
-	height: fit-content;
-	display: inline-flex;
-	flex-direction: column;
-	border-width: 3px;
-	border-radius: 6px;
-	border-color: black;
-	box-shadow: inset 0px 0px 7px 0px black;
+const RawKeyboard = forwardRef<HTMLDivElement>((props: KeyboardProps, ref) => {
+	return (
+		<motion.div
+			drag
+			dragConstraints={ref as any}	// framer-motion library forgot to handle this
+		>
+			this is keyboard
+		</motion.div>
+	)
+})
 
-	padding: ${(props) => props.keyboardPadding}px;
-	row-gap: ${(props) => props.rowSeparation}px;
-	background-color: ${(props) => props.keyboardColor};
+
+const Keyboard = styled(RawKeyboard)`
+	
 `
+
 
 export default Keyboard
