@@ -7,6 +7,7 @@ This project servers three purposes. First, to compare the special keys on diffe
 
 <img src="./README.md.d/keyboard_fsm.svg" alt="Keyboard as a Finite State Machine">
 Since shifting and cap lock are binary conditions, we can make a simple truth table:
+
 | shifting | cap lock | output |
 |----------|----------|--------|
 | 0        | 0        | a      |

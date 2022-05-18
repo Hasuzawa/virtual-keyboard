@@ -18,9 +18,6 @@ const rawApp = (props: AppProps) => {
 			<Display />
 			<DragZone />
 			{/* <MacKeyboard /> */}
-			<KeyCap lowerCase="a" upperCase="A" />
-			<KeyCap lowerCase="b" upperCase="B" />
-			<KeyCap lowerCase="c" upperCase="C" />
 		</main>
 	)
 }

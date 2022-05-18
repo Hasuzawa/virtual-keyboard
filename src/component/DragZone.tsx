@@ -33,7 +33,7 @@ const DragZone = styled(RawDragZone)`
 	position: relative;
 	width: 100%;
 	height: 80%;
-	background-color: coral;
+	background-color: #565656;
 `
 
 interface BoxProps<T> extends StyledComponent {

@@ -12,7 +12,7 @@ interface OSButtonProps extends StyledComponent {
 
 const windowsColor = "#0078D4"
 const macColor = "#A2AAAD"
-const linuxColor = "#33FF33"
+const linuxColor = "#25c725"
 const raspberryColor = "#CD2355"
 
 const iconSize = 30
@@ -44,6 +44,19 @@ export const OSButton = styled(RawOSButton)`
 	justify-content: center;
 	align-items: center;
 	background-color: lightcoral;
+
+	outline: none;
+
+	&&:hover {
+		background-color: rgba(255, 255, 255, 0.5);
+	}
+
+	&&:active {
+	}
+
+	&&:focus {
+		box-shadow: 0px 0px 5px 5px black; // change to each OS's color later
+	}
 `
 
 const WindowOS = styled(OSButton)``

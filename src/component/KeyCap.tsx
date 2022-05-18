@@ -9,23 +9,17 @@ interface KeyCapProps extends StyledComponent {
 	// onEnter: Function
 }
 
-
 const RawKeyCap = (props: KeyCapProps) => {
-	const {lowerCase, upperCase, className } = props
-	// const shifting 
+	const { lowerCase, upperCase, className } = props
+	// const shifting
 	// cap lock
 
-	return (<motion.button className={className}>
-		{lowerCase}
-	</motion.button>
-	)
+	return <motion.button className={className}>{lowerCase}</motion.button>
 }
-
 
 const KeyCap = styled(RawKeyCap)`
 	width: 64px;
 	height: 64px;
-
 
 	/* display: flex;
 	flex-direction: column;
@@ -36,8 +30,6 @@ const KeyCap = styled(RawKeyCap)`
 
 	/* justify-content: center;
 	align-items: center; */
-
 `
-
 
 export default KeyCap

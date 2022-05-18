@@ -24,8 +24,8 @@ const SelectOS = styled(RawSelectOS)`
 	position: absolute;
 	display: flex;
 	flex-flow: column nowrap;
-	left: 50px;
-	top: 50px;
+	left: 20px;
+	top: 20px;
 	width: 100px;
 	height: 300px;
 	background-color: lightgrey;
