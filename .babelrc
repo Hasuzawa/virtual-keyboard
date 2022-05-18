@@ -2,6 +2,7 @@
     "plugins": [
         "styled-components",
         "babel-plugin-twin",
-        "babel-plugin-macros"
+        "babel-plugin-macros",
+        "babel-plugin-styled-components"
     ]
 }
