@@ -1,76 +1,59 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { RootState } from "./store"
+import { OS } from "../type"
+
+type Key = "`" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "0"
 
 interface keyboardState {
-	cap: boolean
-	shift: boolean
+	capLock: boolean
+	shifting: boolean
+	heldKey: Map<Key, boolean>
 
-	a: boolean
-	b: boolean
-	c: boolean
-	d: boolean
-	e: boolean
-	f: boolean
-	g: boolean
-	h: boolean
-	i: boolean
-	j: boolean
-	k: boolean
-	l: boolean
-	m: boolean
-	n: boolean
-	o: boolean
-	p: boolean
-	q: boolean
-	r: boolean
-	s: boolean
-	t: boolean
-	u: boolean
-	v: boolean
-	w: boolean
-	x: boolean
-	y: boolean
-	z: boolean
+	os: OS
 }
 
 const initialState: keyboardState = {
-	cap: false,
-	shift: false,
+	capLock: false,
+	shifting: false,
 
-	a: false,
-	b: false,
-	c: false,
-	d: false,
-	e: false,
-	f: false,
-	g: false,
-	h: false,
-	i: false,
-	j: false,
-	k: false,
-	l: false,
-	m: false,
-	n: false,
-	o: false,
-	p: false,
-	q: false,
-	r: false,
-	s: false,
-	t: false,
-	u: false,
-	v: false,
-	w: false,
-	x: false,
-	y: false,
-	z: false,
+	heldKey: new Map([
+		["`", false],
+		["1", false],
+		["2", false],
+		["3", false],
+		["4", false],
+		["5", false],
+		["6", false],
+		["7", false],
+		["8", false],
+		["9", false],
+		["0", false],
+	]),
+
+	os: "windows", // before release, randomly pick one
 }
 
-// const initialState: keyboardState  = {
+const keyboardSlice = createSlice({
+	name: "keyboard",
+	initialState,
+	reducers: {
+		handleKeyPress: (state, action: PayloadAction<Key>) => {
+			if (state.heldKey.get(action.payload) !== undefined) {
+				state.heldKey.set(action.payload, true)
+			}
+		},
+		handleKeyRelease: (state, action: PayloadAction<Key>) => {
+			if (state.heldKey.get(action.payload) !== undefined) {
+				state.heldKey.set(action.payload, false)
+			}
+		},
+		setOS: (state, action: PayloadAction<OS>) => {
+			state.os = action.payload
+		},
+	},
+})
 
-// }
+export default keyboardSlice.reducer
+export const { handleKeyPress, handleKeyRelease, setOS } = keyboardSlice.actions
 
-// const keyboardSlice = createSlice({
-//     name: "keyboardSlice",
-
-// })
-
-export {}
+export const selectOS = (state: RootState) => state.keyboard.os

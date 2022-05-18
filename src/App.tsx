@@ -2,6 +2,7 @@ import MacKeyboard from "./component/legacy/MacKeyboard"
 import styled from "styled-components"
 import DragZone from "./component/DragZone"
 import Display from "./component/Display"
+import KeyCap from "./component/KeyCap"
 
 interface AppProps {
 	className?: string
@@ -16,7 +17,10 @@ const rawApp = (props: AppProps) => {
             <MacKeyboard /> */}
 			<Display />
 			<DragZone />
-			<MacKeyboard />
+			{/* <MacKeyboard /> */}
+			<KeyCap lowerCase="a" upperCase="A" />
+			<KeyCap lowerCase="b" upperCase="B" />
+			<KeyCap lowerCase="c" upperCase="C" />
 		</main>
 	)
 }

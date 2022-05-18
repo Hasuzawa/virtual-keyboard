@@ -3,6 +3,7 @@ import { StyledComponent } from "../type"
 import { motion } from "framer-motion"
 import { useRef, RefObject, forwardRef } from "react"
 import Keyboard from "./Keyboard"
+import SelectOS from "./SelectOS"
 
 interface DragZoneProps extends StyledComponent {}
 
@@ -11,12 +12,13 @@ const RawDragZone = (props: DragZoneProps) => {
 
 	return (
 		<motion.div className={props.className} ref={divRef}>
-			<Keyboard ref={divRef}/>
+			<Keyboard ref={divRef} />
 			{/* <motion.div drag dragConstraints={divRef}>
 				hello worlsdfjlskdfjskldfjsdlkfsjdf
 			</motion.div>
 			<Box ref={divRef} />
 			<Trial ref={divRef} /> */}
+			<SelectOS />
 		</motion.div>
 	)
 }
@@ -28,6 +30,7 @@ const Trial = forwardRef((props: any, ref) => (
 ))
 
 const DragZone = styled(RawDragZone)`
+	position: relative;
 	width: 100%;
 	height: 80%;
 	background-color: coral;
