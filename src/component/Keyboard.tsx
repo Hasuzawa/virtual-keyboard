@@ -2,10 +2,18 @@ import styled, { ThemeProvider } from "styled-components"
 import { StyledComponent } from "../type"
 import { motion } from "framer-motion"
 import { forwardRef } from "react"
-import KeyCap from "./KeyCap"
+import KeyCap, { HalfKeyCap } from "./KeyCap"
 import { selectedTheme } from "../theme/theme"
 import { useAppDispatch, useAppSelector } from "../store/useStore"
 import { selectOS } from "../store/keyboardSlice"
+import { BsWindows, BsCommand } from "react-icons/bs"
+import { SiRaspberrypi } from "react-icons/si"
+import {
+	MdArrowLeft,
+	MdArrowDropUp,
+	MdArrowDropDown,
+	MdArrowRight,
+} from "react-icons/md"
 
 interface KeyboardProps extends StyledComponent {}
 
@@ -14,10 +22,83 @@ enum KeyWidth {
 	TAB_DEL = 98,
 	CAP_RETURN = 117,
 	SHIFT = 153,
+	SPACEBAR = 352,
+}
+
+const iconParams = {
+	size: 20,
+}
+const arrowIconParams = {
+	size: 30,
 }
 
 const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 	const os = useAppSelector(selectOS)
+
+	const getBottomRow = () => {
+		switch (os) {
+			case "windows":
+				return (
+					<>
+						<KeyCap
+							lowerCase="Ctrl"
+							upperCase=""
+							width={KeyWidth.TAB_DEL}
+						/>
+						<KeyCap lowerCase="Fn" upperCase="" />
+						<KeyCap
+							lowerCase={<BsWindows {...iconParams} />}
+							upperCase=""
+						/>
+						<KeyCap lowerCase="Alt" upperCase="" />
+						<KeyCap
+							lowerCase="Spacebar"
+							upperCase=""
+							width={KeyWidth.SPACEBAR}
+						/>
+						<KeyCap lowerCase="Alt" upperCase="" />
+						<KeyCap lowerCase="Icon" upperCase="" />
+						<KeyCap
+							lowerCase={<MdArrowLeft {...arrowIconParams} />}
+							upperCase=""
+						/>
+						<div>
+							<HalfKeyCap
+								lowerCase={
+									<MdArrowDropUp {...arrowIconParams} />
+								}
+								upperCase=""
+							/>
+							<HalfKeyCap
+								lowerCase={
+									<MdArrowDropDown {...arrowIconParams} />
+								}
+								upperCase=""
+							/>
+						</div>
+						<KeyCap
+							lowerCase={<MdArrowRight {...arrowIconParams} />}
+							upperCase=""
+						/>
+					</>
+				)
+			case "mac":
+				return (
+					<>
+						<KeyCap lowerCase="fn" upperCase="" />
+						<KeyCap lowerCase="control" upperCase="" />
+						<KeyCap lowerCase="option" upperCase="" />
+						<KeyCap lowerCase="command" upperCase="" />
+						<KeyCap lowerCase="Spacebar" upperCase="" />
+						<KeyCap lowerCase="command" upperCase="" />
+						<KeyCap lowerCase="option" upperCase="" />
+						<KeyCap lowerCase="ArrowLeft" upperCase="" />
+						<KeyCap lowerCase="UpDown" upperCase="" />
+						<KeyCap lowerCase="ArrowRight" upperCase="" />
+					</>
+				)
+		}
+	}
 
 	return (
 		<ThemeProvider theme={selectedTheme(os)}>
@@ -108,6 +189,7 @@ const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 					upperCase="shift"
 					width={KeyWidth.SHIFT}
 				/>
+				{getBottomRow()}
 			</motion.div>
 		</ThemeProvider>
 	)

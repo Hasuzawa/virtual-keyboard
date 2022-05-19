@@ -8,12 +8,18 @@ import {
 	selectDisplayUpperCase,
 } from "../store/keyboardSlice"
 
+type VerticalPlacement = "top" | "center" | "bottom"
+type HorizontalPlacement = "left" | "center" | "right"
+
+type Placement = `${VerticalPlacement}-${HorizontalPlacement}`
+
 interface KeyCapProps extends StyledComponent {
-	lowerCase: string
+	lowerCase: string | React.ReactNode
 	upperCase: string
 	width?: number
 	// onClick: Function
 	// onEnter: Function
+	placement?: Placement
 }
 
 const RawKeyCap = (props: KeyCapProps) => {
@@ -26,7 +32,7 @@ const RawKeyCap = (props: KeyCapProps) => {
 	return (
 		<motion.button
 			className={className}
-			onClick={() => handleActive(lowerCase)}
+			// onClick={() => handleActive(lowerCase)}
 		>
 			{displayUpperCase ? upperCase : lowerCase}
 		</motion.button>
@@ -38,8 +44,8 @@ const KeyCap = styled(RawKeyCap)`
 	height: 64px;
 	font-size: 16px;
 
-	/* display: flex;
-	flex-direction: column;
+	display: flex;
+	/* flex-direction: column;
 	flex-wrap: nowrap; */
 	border-radius: 6px;
 	/* font-size: 20px; */
@@ -49,6 +55,21 @@ const KeyCap = styled(RawKeyCap)`
 	align-items: center; */
 	color: ${(props) => props.theme.keyCapColor};
 	background-color: ${(props) => props.theme.keyCapBackgroundColor};
+	${(props) => {
+		switch (props.placement) {
+			default:
+			case "center-center":
+				return css`
+					justify-content: center;
+					align-items: center;
+				`
+		}
+	}}
+`
+
+export const HalfKeyCap = styled(KeyCap)`
+	height: 32px;
+	align-self: end;
 `
 
 export default KeyCap
