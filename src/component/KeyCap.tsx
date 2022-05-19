@@ -1,10 +1,11 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { StyledComponent } from "../type"
 import { motion } from "framer-motion"
 
 interface KeyCapProps extends StyledComponent {
 	lowerCase: string
 	upperCase: string
+	width?: number
 	// onClick: Function
 	// onEnter: Function
 }
@@ -18,7 +19,7 @@ const RawKeyCap = (props: KeyCapProps) => {
 }
 
 const KeyCap = styled(RawKeyCap)`
-	width: 64px;
+	width: ${(props) => props.width ?? 64}px;
 	height: 64px;
 
 	/* display: flex;
@@ -30,6 +31,8 @@ const KeyCap = styled(RawKeyCap)`
 
 	/* justify-content: center;
 	align-items: center; */
+	color: ${(props) => props.theme.keyCapColor};
+	background-color: ${(props) => props.theme.keyCapBackgroundColor};
 `
 
 export default KeyCap

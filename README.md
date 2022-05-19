@@ -15,7 +15,7 @@ Since shifting and cap lock are binary conditions, we can make a simple truth ta
 | 0        | 1        | A      |
 | 1        | 1        | a      |
 
-This is exclusive or, so we can use ^ in code.
+This is (negation of) exclusive or, so we can use ^ in code.
 
 While this is quite a trivial state machine, knowing that there are around 50 keys on a keyboard, every slight improvement in code design or efficiency is a big gain.
 
