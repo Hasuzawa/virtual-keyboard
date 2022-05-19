@@ -3,14 +3,32 @@ import styled from "styled-components"
 import DragZone from "./component/DragZone"
 import Display from "./component/Display"
 import KeyCap from "./component/KeyCap"
+import { useAppDispatch, useAppSelector } from "./store/useStore"
+import { handleKeyDown, handleKeyUp } from "./store/keyboardSlice"
+import { KeyboardEvent } from "react"
 
 interface AppProps {
 	className?: string
 	children?: React.ReactNode
 }
 const rawApp = (props: AppProps) => {
+	const dispatch = useAppDispatch()
+
+	const onKeyDown = <T,>(e: KeyboardEvent<T>) =>
+		dispatch(handleKeyDown(e.key as any))
+	const onKeyUp = (e: KeyboardEvent) => dispatch(handleKeyUp(e.key as any))
+
 	return (
-		<main className={props.className}>
+		<main
+			className={props.className}
+			tabIndex={-1}
+			onKeyDown={(e: KeyboardEvent<HTMLElement>) =>
+				dispatch(handleKeyDown(e.key as any))
+			}
+			onKeyUp={(e: KeyboardEvent<HTMLElement>) =>
+				dispatch(handleKeyUp(e.key as any))
+			}
+		>
 			{/* <div>
                 <textarea />
             </div>

@@ -1,6 +1,10 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
 import keyboardReducer from "./keyboardSlice"
 
+import { enableMapSet } from "immer"
+
+enableMapSet()
+
 export const store = configureStore({
 	reducer: {
 		keyboard: keyboardReducer,

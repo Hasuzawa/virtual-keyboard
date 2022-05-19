@@ -10,12 +10,13 @@ type KeyboardTheme = {
 const windows: KeyboardTheme = {
 	keyCapColor: "#dcdcdc",
 	keyCapBackgroundColor: "#303030",
-	keyboardBackgroundColor: "#303030",
+	keyboardBackgroundColor: "red",
 }
 
 const mac = {
 	keyCapColor: "white",
 	keyCapBackgroundColor: "black",
+	keyboardBackgroundColor: "",
 }
 
 const linux = {

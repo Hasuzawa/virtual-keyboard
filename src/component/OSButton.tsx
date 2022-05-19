@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { StyledComponent, OS } from "../type"
 import { useAppDispatch, useAppSelector } from "../store/useStore"
-import { selectOS } from "../store/keyboardSlice"
+import { selectOS, setOS } from "../store/keyboardSlice"
 import { BsWindows, BsApple } from "react-icons/bs"
 import { FaLinux, FaRaspberryPi } from "react-icons/fa"
 
@@ -19,6 +19,7 @@ const iconSize = 30
 
 const RawOSButton = (props: OSButtonProps) => {
 	const os = useAppSelector(selectOS)
+	const dispatch = useAppDispatch()
 
 	const renderIcon = () => {
 		switch (props.os) {
@@ -33,7 +34,14 @@ const RawOSButton = (props: OSButtonProps) => {
 				return <FaRaspberryPi size={iconSize} color={raspberryColor} />
 		}
 	}
-	return <button className={props.className}>{renderIcon()}</button>
+	return (
+		<button
+			className={props.className}
+			onClick={() => dispatch(setOS(props.os))}
+		>
+			{renderIcon()}
+		</button>
+	)
 }
 
 export const OSButton = styled(RawOSButton)`

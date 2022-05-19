@@ -1,6 +1,12 @@
 import styled, { css } from "styled-components"
 import { StyledComponent } from "../type"
 import { motion } from "framer-motion"
+import { useAppDispatch, useAppSelector } from "../store/useStore"
+import {
+	handleKeyDown,
+	handleKeyUp,
+	selectDisplayUpperCase,
+} from "../store/keyboardSlice"
 
 interface KeyCapProps extends StyledComponent {
 	lowerCase: string
@@ -12,15 +18,25 @@ interface KeyCapProps extends StyledComponent {
 
 const RawKeyCap = (props: KeyCapProps) => {
 	const { lowerCase, upperCase, className } = props
-	// const shifting
-	// cap lock
+	const dispatch = useAppDispatch()
+	const displayUpperCase = useAppSelector(selectDisplayUpperCase)
 
-	return <motion.button className={className}>{lowerCase}</motion.button>
+	const handleActive = (key: string) => dispatch(handleKeyDown(key as any))
+
+	return (
+		<motion.button
+			className={className}
+			onClick={() => handleActive(lowerCase)}
+		>
+			{displayUpperCase ? upperCase : lowerCase}
+		</motion.button>
+	)
 }
 
 const KeyCap = styled(RawKeyCap)`
 	width: ${(props) => props.width ?? 64}px;
 	height: 64px;
+	font-size: 16px;
 
 	/* display: flex;
 	flex-direction: column;

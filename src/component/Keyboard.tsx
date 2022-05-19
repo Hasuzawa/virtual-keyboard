@@ -13,6 +13,7 @@ enum KeyWidth {
 	STANDARD = 64,
 	TAB_DEL = 98,
 	CAP_RETURN = 117,
+	SHIFT = 153,
 }
 
 const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
@@ -85,14 +86,36 @@ const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 					upperCase="return"
 					width={KeyWidth.CAP_RETURN}
 				/>
+
+				<KeyCap
+					lowerCase="shift"
+					upperCase="shift"
+					width={KeyWidth.SHIFT}
+				/>
+				<KeyCap lowerCase="z" upperCase="Z" />
+				<KeyCap lowerCase="x" upperCase="X" />
+				<KeyCap lowerCase="c" upperCase="C" />
+				<KeyCap lowerCase="v" upperCase="V" />
+				<KeyCap lowerCase="b" upperCase="B" />
+				<KeyCap lowerCase="n" upperCase="N" />
+				<KeyCap lowerCase="m" upperCase="M" />
+				<KeyCap lowerCase="," upperCase="<" />
+
+				<KeyCap lowerCase="." upperCase=">" />
+				<KeyCap lowerCase="/" upperCase="?" />
+				<KeyCap
+					lowerCase="shift"
+					upperCase="shift"
+					width={KeyWidth.SHIFT}
+				/>
 			</motion.div>
 		</ThemeProvider>
 	)
 })
 
 const Keyboard = styled(RawKeyboard)`
-	width: 1000px;
-	height: 400px;
+	/* width: 1000px;
+	height: 400px; */
 	display: inline-flex;
 	justify-content: flex-start;
 	align-items: flex-start;
@@ -101,6 +124,7 @@ const Keyboard = styled(RawKeyboard)`
 	position: absolute;
 	left: 50%;
 	border: 3px solid black;
+	border-radius: 10px;
 	padding: 12px;
 	width: 1064px;
 	height: 382px;
@@ -111,7 +135,8 @@ const Keyboard = styled(RawKeyboard)`
 	bottom: 10%;
 	flex-flow: row wrap;
 
-	background-color: coral;
+	background-color: ${(props) => props.theme.keyboardBackgroundColor};
+	/* background-color: red; */
 `
 
 export default Keyboard
