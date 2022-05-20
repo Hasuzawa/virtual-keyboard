@@ -1,22 +1,24 @@
-import { OS, Color } from "../type"
+import { OS, Color, BoxShadow } from "../type"
 
 type KeyboardTheme = {
 	keyCapColor: Color
 	keyCapBackgroundColor: Color
 	// keyboardColor: Color,
 	keyboardBackgroundColor: Color
+	keyboardBorderColor?: Color
+	boxShadow?: BoxShadow
 }
 
 const windows: KeyboardTheme = {
 	keyCapColor: "#dcdcdc",
 	keyCapBackgroundColor: "#303030",
-	keyboardBackgroundColor: "red",
+	keyboardBackgroundColor: "",
 }
 
 const mac = {
 	keyCapColor: "white",
 	keyCapBackgroundColor: "black",
-	keyboardBackgroundColor: "",
+	keyboardBackgroundColor: "#c0c1c3",
 }
 
 const linux = {
@@ -25,8 +27,12 @@ const linux = {
 }
 
 const raspberry = {
-	keyCapColor: "oragne",
+	keyCapColor: "#CD2355",
 	keyCapBackgroundColor: "white",
+	keyboardBackgroundColor: "white",
+
+	boxShadow: "0px 0px 3px 1px black",
+	// keyboardBorderColor: "black"
 }
 
 export function selectedTheme(os: OS) {

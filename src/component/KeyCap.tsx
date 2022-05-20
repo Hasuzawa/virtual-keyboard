@@ -15,7 +15,7 @@ type Placement = `${VerticalPlacement}-${HorizontalPlacement}`
 
 interface KeyCapProps extends StyledComponent {
 	lowerCase: string | React.ReactNode
-	upperCase: string
+	upperCase?: string | React.ReactNode
 	width?: number
 	// onClick: Function
 	// onEnter: Function
@@ -24,6 +24,7 @@ interface KeyCapProps extends StyledComponent {
 
 const RawKeyCap = (props: KeyCapProps) => {
 	const { lowerCase, upperCase, className } = props
+	const [lower, upper] = [lowerCase, upperCase ?? lowerCase]
 	const dispatch = useAppDispatch()
 	const displayUpperCase = useAppSelector(selectDisplayUpperCase)
 
@@ -34,7 +35,7 @@ const RawKeyCap = (props: KeyCapProps) => {
 			className={className}
 			// onClick={() => handleActive(lowerCase)}
 		>
-			{displayUpperCase ? upperCase : lowerCase}
+			{displayUpperCase ? upper : lower}
 		</motion.button>
 	)
 }
@@ -42,19 +43,20 @@ const RawKeyCap = (props: KeyCapProps) => {
 const KeyCap = styled(RawKeyCap)`
 	width: ${(props) => props.width ?? 64}px;
 	height: 64px;
-	font-size: 16px;
+	font-size: 18px;
 
 	display: flex;
 	/* flex-direction: column;
 	flex-wrap: nowrap; */
 	border-radius: 6px;
 	/* font-size: 20px; */
-	/* box-shadow: 0px 0px 0px 0px black; */
 
 	/* justify-content: center;
 	align-items: center; */
 	color: ${(props) => props.theme.keyCapColor};
 	background-color: ${(props) => props.theme.keyCapBackgroundColor};
+	box-shadow: ${(props) => props.theme.boxShadow};
+
 	${(props) => {
 		switch (props.placement) {
 			default:

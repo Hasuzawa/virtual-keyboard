@@ -6,6 +6,9 @@ import KeyCap from "./component/KeyCap"
 import { useAppDispatch, useAppSelector } from "./store/useStore"
 import { handleKeyDown, handleKeyUp } from "./store/keyboardSlice"
 import { KeyboardEvent } from "react"
+import { selectedTheme } from "./theme/theme"
+import { selectOS } from "./store/keyboardSlice"
+import { ThemeProvider } from "styled-components"
 
 interface AppProps {
 	className?: string
@@ -18,25 +21,29 @@ const rawApp = (props: AppProps) => {
 		dispatch(handleKeyDown(e.key as any))
 	const onKeyUp = (e: KeyboardEvent) => dispatch(handleKeyUp(e.key as any))
 
+	const os = useAppSelector(selectOS)
+
 	return (
-		<main
-			className={props.className}
-			tabIndex={-1}
-			onKeyDown={(e: KeyboardEvent<HTMLElement>) =>
-				dispatch(handleKeyDown(e.key as any))
-			}
-			onKeyUp={(e: KeyboardEvent<HTMLElement>) =>
-				dispatch(handleKeyUp(e.key as any))
-			}
-		>
-			{/* <div>
+		<ThemeProvider theme={selectedTheme(os)}>
+			<main
+				className={props.className}
+				tabIndex={-1}
+				onKeyDown={(e: KeyboardEvent<HTMLElement>) =>
+					dispatch(handleKeyDown(e.key as any))
+				}
+				onKeyUp={(e: KeyboardEvent<HTMLElement>) =>
+					dispatch(handleKeyUp(e.key as any))
+				}
+			>
+				{/* <div>
                 <textarea />
             </div>
             <MacKeyboard /> */}
-			<Display />
-			<DragZone />
-			<MacKeyboard />
-		</main>
+				<Display />
+				<DragZone />
+				<MacKeyboard />
+			</main>
+		</ThemeProvider>
 	)
 }
 
