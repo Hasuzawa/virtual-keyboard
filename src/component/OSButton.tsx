@@ -62,9 +62,9 @@ export const OSButton = styled(RawOSButton)`
 	&&:active {
 	}
 
-	&&:focus {
+	/* &&:focus {
 		box-shadow: 0px 0px 5px 5px black; // change to each OS's color later
-	}
+	} */
 `
 
 const WindowOS = styled(OSButton)``

@@ -15,13 +15,15 @@ import {
 	MdArrowDropDown,
 	MdArrowRight,
 } from "react-icons/md"
+import WindowKeyboard from "./WindowKeyboard"
+import RaspberryPiKeyCaps from "./RaspberryPiKeyCaps"
 
 interface KeyboardProps extends StyledComponent {
 	dragging: boolean
 	setDragging: any
 }
 
-enum KeyWidth {
+export enum KeyWidth {
 	STANDARD = 64,
 	TAB_DEL = 98,
 	CAP_RETURN = 117,
@@ -30,10 +32,7 @@ enum KeyWidth {
 	COMMAND = 81,
 }
 
-const iconParams = {
-	size: 20,
-}
-const arrowIconParams = {
+export const arrowIconParams = {
 	size: 30,
 }
 
@@ -41,38 +40,10 @@ const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 	const { setDragging } = props
 	const os = useAppSelector(selectOS)
 
-	const getBottomRow = () => {
+	const getKeys = () => {
 		switch (os) {
 			case "windows":
-				return (
-					<>
-						<KeyCap lowerCase="Ctrl" width={KeyWidth.TAB_DEL} />
-						<KeyCap lowerCase="Fn" />
-						<KeyCap lowerCase={<BsWindows {...iconParams} />} />
-						<KeyCap lowerCase="Alt" />
-						<KeyCap lowerCase="" width={KeyWidth.SPACEBAR} />
-						<KeyCap lowerCase="Alt" />
-						<KeyCap lowerCase="Ctrl" />
-						<KeyCap
-							lowerCase={<MdArrowLeft {...arrowIconParams} />}
-						/>
-						<div>
-							<HalfKeyCap
-								lowerCase={
-									<MdArrowDropUp {...arrowIconParams} />
-								}
-							/>
-							<HalfKeyCap
-								lowerCase={
-									<MdArrowDropDown {...arrowIconParams} />
-								}
-							/>
-						</div>
-						<KeyCap
-							lowerCase={<MdArrowRight {...arrowIconParams} />}
-						/>
-					</>
-				)
+				return <WindowKeyboard />
 			case "mac":
 				return (
 					<>
@@ -108,7 +79,7 @@ const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 					<>
 						<KeyCap lowerCase="Ctrl" width={KeyWidth.TAB_DEL} />
 						<KeyCap lowerCase="Fn" />
-						<KeyCap lowerCase={<BsWindows {...iconParams} />} />
+						<KeyCap lowerCase={<BsWindows size={20} />} />
 						<KeyCap lowerCase="Alt" />
 						<KeyCap lowerCase="" width={KeyWidth.SPACEBAR} />
 						<KeyCap lowerCase="Alt" />
@@ -134,37 +105,11 @@ const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 					</>
 				)
 			case "raspberry":
-				return (
-					<>
-						<KeyCap lowerCase="Ctrl" width={KeyWidth.TAB_DEL} />
-						<KeyCap lowerCase="Fn" />
-						<KeyCap lowerCase={<SiRaspberrypi size={30} />} />
-						<KeyCap lowerCase="Alt" />
-						<KeyCap lowerCase="" width={KeyWidth.SPACEBAR} />
-						<KeyCap lowerCase="Alt" />
-						<KeyCap lowerCase="Ctrl" />
-						<HalfKeyCap
-							lowerCase={<MdArrowLeft {...arrowIconParams} />}
-						/>
-						<div>
-							<HalfKeyCap
-								lowerCase={
-									<MdArrowDropUp {...arrowIconParams} />
-								}
-							/>
-							<HalfKeyCap
-								lowerCase={
-									<MdArrowDropDown {...arrowIconParams} />
-								}
-							/>
-						</div>
-						<HalfKeyCap
-							lowerCase={<MdArrowRight {...arrowIconParams} />}
-						/>
-					</>
-				)
+				return <RaspberryPiKeyCaps />
 		}
 	}
+	// note: for transition animation to appear, the same component must be used, so switching or rendering different
+	// won't have animation
 
 	return (
 		<motion.div
@@ -174,85 +119,7 @@ const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 			onDragEnd={() => setDragging(false)}
 			className={props.className}
 		>
-			<KeyCap lowerCase="`" upperCase="~" />
-			<KeyCap lowerCase="1" upperCase="!" />
-			<KeyCap lowerCase="2" upperCase="@" />
-			<KeyCap lowerCase="3" upperCase="#" />
-			<KeyCap lowerCase="4" upperCase="$" />
-			<KeyCap lowerCase="5" upperCase="%" />
-			<KeyCap lowerCase="6" upperCase="^" />
-			<KeyCap lowerCase="7" upperCase="&amp;" />
-			<KeyCap lowerCase="8" upperCase="*" />
-			<KeyCap lowerCase="9" upperCase="(" />
-			<KeyCap lowerCase="0" upperCase=")" />
-			<KeyCap lowerCase="-" upperCase="_" />
-			<KeyCap lowerCase="=" upperCase="+" />
-			<KeyCap
-				lowerCase="delete"
-				upperCase="delete"
-				width={KeyWidth.TAB_DEL}
-			/>
-
-			<KeyCap lowerCase="tab" upperCase="tab" width={KeyWidth.TAB_DEL} />
-			<KeyCap lowerCase="q" upperCase="Q" />
-			<KeyCap lowerCase="w" upperCase="W" />
-			<KeyCap lowerCase="e" upperCase="E" />
-			<KeyCap lowerCase="r" upperCase="R" />
-			<KeyCap lowerCase="t" upperCase="T" />
-			<KeyCap lowerCase="y" upperCase="Y" />
-			<KeyCap lowerCase="u" upperCase="U" />
-			<KeyCap lowerCase="i" upperCase="I" />
-			<KeyCap lowerCase="o" upperCase="O" />
-			<KeyCap lowerCase="p" upperCase="P" />
-			<KeyCap lowerCase="[" upperCase="{" />
-			<KeyCap lowerCase="]" upperCase="}" />
-			<KeyCap lowerCase="\" upperCase="|" />
-
-			<KeyCap
-				lowerCase="Caps"
-				upperCase="Caps"
-				width={KeyWidth.CAP_RETURN}
-			/>
-			<KeyCap lowerCase="a" upperCase="A" />
-			<KeyCap lowerCase="s" upperCase="S" />
-			<KeyCap lowerCase="d" upperCase="D" />
-			<KeyCap lowerCase="f" upperCase="F" />
-			<KeyCap lowerCase="g" upperCase="G" />
-			<KeyCap lowerCase="h" upperCase="H" />
-			<KeyCap lowerCase="j" upperCase="J" />
-			<KeyCap lowerCase="k" upperCase="K" />
-			<KeyCap lowerCase="l" upperCase="L" />
-
-			<KeyCap lowerCase=";" upperCase=":" />
-			<KeyCap lowerCase="'" upperCase='"' />
-			<KeyCap
-				lowerCase="return"
-				upperCase="return"
-				width={KeyWidth.CAP_RETURN}
-			/>
-
-			<KeyCap
-				lowerCase="shift"
-				upperCase="shift"
-				width={KeyWidth.SHIFT}
-			/>
-			<KeyCap lowerCase="z" upperCase="Z" />
-			<KeyCap lowerCase="x" upperCase="X" />
-			<KeyCap lowerCase="c" upperCase="C" />
-			<KeyCap lowerCase="v" upperCase="V" />
-			<KeyCap lowerCase="b" upperCase="B" />
-			<KeyCap lowerCase="n" upperCase="N" />
-			<KeyCap lowerCase="m" upperCase="M" />
-			<KeyCap lowerCase="," upperCase="<" />
-
-			<KeyCap lowerCase="." upperCase=">" />
-			<KeyCap lowerCase="/" upperCase="?" />
-			<KeyCap
-				lowerCase="shift"
-				upperCase="shift"
-				width={KeyWidth.SHIFT}
-			/>
-			{getBottomRow()}
+			{getKeys()}
 		</motion.div>
 	)
 })
@@ -293,6 +160,8 @@ const Keyboard = styled(RawKeyboard)`
 			`
 	}}
 	transition: box-shadow 0.3s ease-in-out;
+
+	overflow: hidden;
 `
 
 export default Keyboard

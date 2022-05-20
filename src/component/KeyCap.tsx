@@ -59,11 +59,29 @@ const KeyCap = styled(RawKeyCap)`
 
 	${(props) => {
 		switch (props.placement) {
+			// case "top-left":
+			// 	return css`
+			// 	`
+			case "center-left":
+				return css`
+					justify-content: flex-start;
+					align-items: center;
+				`
 			default:
 			case "center-center":
 				return css`
 					justify-content: center;
 					align-items: center;
+				`
+			case "center-right":
+				return css`
+					justify-content: flex-end;
+					align-items: center;
+				`
+			case "bottom-left":
+				return css`
+					justify-content: flex-start;
+					align-items: flex-end;
 				`
 		}
 	}}
