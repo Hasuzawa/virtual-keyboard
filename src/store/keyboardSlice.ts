@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { RootState } from "./store"
 import { OS } from "../type"
+import { selectRandom } from "../util/function"
 
 type Key =
 	| "`"
@@ -16,6 +17,8 @@ type Key =
 	| "0"
 	| "Shift"
 	| "CapsLock"
+
+export const allOS: OS[] = ["windows", "mac", "linux", "raspberry"]
 
 interface keyboardState {
 	capLock: boolean
@@ -45,7 +48,7 @@ const initialState: keyboardState = {
 		["0", false],
 	]),
 
-	os: "windows", // before release, randomly pick one
+	os: selectRandom(allOS),
 }
 
 const keyboardSlice = createSlice({

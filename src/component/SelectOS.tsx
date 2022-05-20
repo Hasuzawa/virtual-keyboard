@@ -4,6 +4,9 @@ import { StyledComponent } from "../type"
 import { OSButton } from "./OSButton"
 import { useAppDispatch, useAppSelector } from "../store/useStore"
 import { selectOS } from "../store/keyboardSlice"
+import { OS } from "../type"
+import { shuffleArray } from "../util/function"
+import { allOS } from "../store/keyboardSlice"
 
 interface SelectOSProps extends StyledComponent {}
 
@@ -12,10 +15,13 @@ const RawSelectOS = (props: SelectOSProps) => {
 
 	return (
 		<div className={props.className}>
-			<OSButton os="windows" />
+			{shuffleArray(allOS).map((x, idx) => (
+				<OSButton os={x} />
+			))}
+			{/* <OSButton os="windows" />
 			<OSButton os="mac" />
 			<OSButton os="linux" />
-			<OSButton os="raspberry" />
+			<OSButton os="raspberry" /> */}
 		</div>
 	)
 }

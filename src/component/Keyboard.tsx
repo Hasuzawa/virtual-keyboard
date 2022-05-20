@@ -1,4 +1,4 @@
-import styled, { ThemeProvider } from "styled-components"
+import styled, { ThemeProvider, css } from "styled-components"
 import { StyledComponent } from "../type"
 import { motion } from "framer-motion"
 import { forwardRef } from "react"
@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "../store/useStore"
 import { selectOS } from "../store/keyboardSlice"
 import { BsWindows, BsCommand } from "react-icons/bs"
 import { SiRaspberrypi } from "react-icons/si"
+import { useState } from "react"
 import {
 	MdArrowLeft,
 	MdArrowDropUp,
@@ -15,7 +16,10 @@ import {
 	MdArrowRight,
 } from "react-icons/md"
 
-interface KeyboardProps extends StyledComponent {}
+interface KeyboardProps extends StyledComponent {
+	dragging: boolean
+	setDragging: any
+}
 
 enum KeyWidth {
 	STANDARD = 64,
@@ -34,6 +38,7 @@ const arrowIconParams = {
 }
 
 const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
+	const { setDragging } = props
 	const os = useAppSelector(selectOS)
 
 	const getBottomRow = () => {
@@ -135,6 +140,8 @@ const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 		<motion.div
 			drag
 			dragConstraints={ref as any} // framer-motion library forgot to handle forwarded ref, but it still works
+			onDragStart={() => setDragging(true)}
+			onDragEnd={() => setDragging(false)}
 			className={props.className}
 		>
 			<KeyCap lowerCase="`" upperCase="~" />
@@ -232,6 +239,8 @@ const Keyboard = styled(RawKeyboard)`
 	left: 50%;
 	border: 3px solid black;
 	border-color: ${(props) => props.theme.keyboardBorderColor};
+	/* box-shadow: ${(props) => props.theme.keyboardBoxShadow}; */
+	/* box-shadow: inset 0px 0px 5px 0px black; */
 	border-radius: 10px;
 	padding: 12px;
 	width: 1064px;
@@ -244,7 +253,16 @@ const Keyboard = styled(RawKeyboard)`
 	flex-flow: row wrap;
 
 	background-color: ${(props) => props.theme.keyboardBackgroundColor};
+
 	/* background-color: red; */
+
+	${(props) => {
+		if (props.dragging)
+			return css`
+				box-shadow: 30px 30px 10px 10px rgba(0, 0, 0, 0.5);
+			`
+	}}
+	transition: box-shadow 0.3s ease-in-out;
 `
 
 export default Keyboard

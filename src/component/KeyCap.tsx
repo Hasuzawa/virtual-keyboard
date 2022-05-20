@@ -55,7 +55,7 @@ const KeyCap = styled(RawKeyCap)`
 	align-items: center; */
 	color: ${(props) => props.theme.keyCapColor};
 	background-color: ${(props) => props.theme.keyCapBackgroundColor};
-	box-shadow: ${(props) => props.theme.boxShadow};
+	box-shadow: ${(props) => props.theme.keyCapBoxShadow};
 
 	${(props) => {
 		switch (props.placement) {

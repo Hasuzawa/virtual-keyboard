@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { StyledComponent } from "../type"
 import { motion } from "framer-motion"
-import { useRef, RefObject, forwardRef } from "react"
+import { useRef, useState } from "react"
 import Keyboard from "./Keyboard"
 import SelectOS from "./SelectOS"
 
@@ -9,10 +9,15 @@ interface DragZoneProps extends StyledComponent {}
 
 const RawDragZone = (props: DragZoneProps) => {
 	const divRef = useRef<HTMLDivElement>(null)
+	const [dragging, setDragging] = useState<boolean>(false)
 
 	return (
 		<motion.div className={props.className} ref={divRef}>
-			<Keyboard ref={divRef} />
+			<Keyboard
+				ref={divRef}
+				dragging={dragging}
+				setDragging={setDragging}
+			/>
 			{/* <motion.div drag dragConstraints={divRef}>
 				hello worlsdfjlskdfjskldfjsdlkfsjdf
 			</motion.div>
