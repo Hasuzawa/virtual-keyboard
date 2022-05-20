@@ -5,6 +5,8 @@ interface SpanProps extends StyledComponent {
 	text?: string
 	paddingLeft?: number
 	paddingRight?: number
+	paddingTop?: number
+	paddingBottom?: number
 	fontSize?: number
 }
 
@@ -15,6 +17,9 @@ const RawSpan = (props: SpanProps) => {
 const Span = styled(RawSpan)`
 	padding-left: ${({ paddingLeft }) => paddingLeft}px;
 	padding-right: ${({ paddingRight }) => paddingRight}px;
+	padding-top: ${({ paddingTop }) => paddingTop}px;
+	padding-bottom: ${({ paddingBottom }) => paddingBottom}px;
+
 	font-size: ${({ fontSize }) => fontSize}px;
 `
 

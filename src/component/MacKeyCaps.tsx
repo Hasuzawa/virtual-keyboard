@@ -12,12 +12,12 @@ import {
 import { KeyWidth, arrowIconParams } from "./Keyboard"
 import Span from "./Span"
 
-interface RaspberryPiKeyCapsProps extends StyledComponent {}
-
-const padding = 15
+const padding = 10
 const smallerFont = 14
 
-const RawRaspberryPiKeyCaps = (props: RaspberryPiKeyCapsProps) => {
+interface MacKeyCapsProps extends StyledComponent {}
+
+const RawMacKeyCaps = (props: MacKeyCapsProps) => {
 	return (
 		<>
 			<KeyCap lowerCase="`" upperCase="~" />
@@ -35,22 +35,30 @@ const RawRaspberryPiKeyCaps = (props: RaspberryPiKeyCapsProps) => {
 			<KeyCap lowerCase="=" upperCase="+" />
 			<KeyCap
 				lowerCase={
-					<Span paddingRight={padding} fontSize={smallerFont}>
-						Backspace
+					<Span
+						paddingRight={padding}
+						paddingBottom={padding}
+						fontSize={smallerFont}
+					>
+						delete
 					</Span>
 				}
 				width={KeyWidth.TAB_DEL}
-				placement="center-right"
+				placement="bottom-right"
 			/>
 
 			<KeyCap
 				lowerCase={
-					<Span paddingLeft={padding} fontSize={smallerFont}>
-						Tab
+					<Span
+						paddingLeft={padding}
+						paddingBottom={padding}
+						fontSize={smallerFont}
+					>
+						tab
 					</Span>
 				}
 				width={KeyWidth.TAB_DEL}
-				placement="center-left"
+				placement="bottom-left"
 			/>
 			<KeyCap lowerCase="q" upperCase="Q" />
 			<KeyCap lowerCase="w" upperCase="W" />
@@ -68,12 +76,16 @@ const RawRaspberryPiKeyCaps = (props: RaspberryPiKeyCapsProps) => {
 
 			<KeyCap
 				lowerCase={
-					<Span paddingLeft={padding} fontSize={smallerFont}>
-						Caps
+					<Span
+						paddingLeft={padding}
+						paddingBottom={padding}
+						fontSize={smallerFont}
+					>
+						caps lock
 					</Span>
 				}
 				width={KeyWidth.CAP_RETURN}
-				placement="center-left"
+				placement="bottom-left"
 			/>
 
 			<KeyCap lowerCase="a" upperCase="A" />
@@ -90,22 +102,30 @@ const RawRaspberryPiKeyCaps = (props: RaspberryPiKeyCapsProps) => {
 			<KeyCap lowerCase="'" upperCase='"' />
 			<KeyCap
 				lowerCase={
-					<Span paddingRight={padding} fontSize={smallerFont}>
-						Enter
+					<Span
+						paddingRight={padding}
+						paddingBottom={padding}
+						fontSize={smallerFont}
+					>
+						return
 					</Span>
 				}
 				width={KeyWidth.CAP_RETURN}
-				placement="center-right"
+				placement="bottom-right"
 			/>
 
 			<KeyCap
 				lowerCase={
-					<Span paddingLeft={padding} fontSize={smallerFont}>
-						Shift
+					<Span
+						paddingLeft={padding}
+						paddingBottom={padding}
+						fontSize={smallerFont}
+					>
+						shift
 					</Span>
 				}
 				width={KeyWidth.SHIFT}
-				placement="center-left"
+				placement="bottom-left"
 			/>
 			<KeyCap lowerCase="z" upperCase="Z" />
 			<KeyCap lowerCase="x" upperCase="X" />
@@ -120,42 +140,37 @@ const RawRaspberryPiKeyCaps = (props: RaspberryPiKeyCapsProps) => {
 			<KeyCap lowerCase="/" upperCase="?" />
 			<KeyCap
 				lowerCase={
-					<Span paddingRight={padding} fontSize={smallerFont}>
-						Shift
+					<Span
+						paddingRight={padding}
+						paddingBottom={padding}
+						fontSize={smallerFont}
+					>
+						shift
 					</Span>
 				}
 				width={KeyWidth.SHIFT}
-				placement="center-right"
+				placement="bottom-right"
 			/>
 
 			<KeyCap
 				lowerCase={
-					<Span paddingLeft={padding} fontSize={smallerFont}>
-						Ctrl
+					<Span
+						paddingTop={padding}
+						paddingRight={padding}
+						fontSize={smallerFont}
+					>
+						fn
 					</Span>
 				}
-				width={KeyWidth.TAB_DEL}
-				placement="center-left"
+				placement="top-right"
 			/>
 
-			<KeyCap
-				lowerCase={<Span fontSize={smallerFont}>Fn</Span>}
-				placement="center-center"
-			/>
-			<KeyCap lowerCase={<SiRaspberrypi size={30} />} />
-			<KeyCap
-				lowerCase={<Span fontSize={smallerFont}>Alt</Span>}
-				placement="center-center"
-			/>
+			<KeyCap lowerCase="control" />
+			<KeyCap lowerCase="option" />
+			<KeyCap lowerCase="command" width={KeyWidth.COMMAND} />
 			<KeyCap lowerCase="" width={KeyWidth.SPACEBAR} />
-			<KeyCap
-				lowerCase={<Span fontSize={smallerFont}>Alt</Span>}
-				placement="center-center"
-			/>
-			<KeyCap
-				lowerCase={<Span fontSize={smallerFont}>Ctrl</Span>}
-				placement="center-center"
-			/>
+			<KeyCap lowerCase="command" width={KeyWidth.COMMAND} />
+			<KeyCap lowerCase="option" />
 			<HalfKeyCap lowerCase={<MdArrowLeft {...arrowIconParams} />} />
 			<div>
 				<HalfKeyCap
@@ -170,6 +185,6 @@ const RawRaspberryPiKeyCaps = (props: RaspberryPiKeyCapsProps) => {
 	)
 }
 
-const RaspberryPiKeyCaps = styled(RawRaspberryPiKeyCaps)``
+const MacKeyCaps = styled(RawMacKeyCaps)``
 
-export default RaspberryPiKeyCaps
+export default MacKeyCaps

@@ -17,6 +17,7 @@ import {
 } from "react-icons/md"
 import WindowKeyboard from "./WindowKeyboard"
 import RaspberryPiKeyCaps from "./RaspberryPiKeyCaps"
+import MacKeyCaps from "./MacKeyCaps"
 
 interface KeyboardProps extends StyledComponent {
 	dragging: boolean
@@ -45,35 +46,7 @@ const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 			case "windows":
 				return <WindowKeyboard />
 			case "mac":
-				return (
-					<>
-						<KeyCap lowerCase="fn" />
-						<KeyCap lowerCase="control" />
-						<KeyCap lowerCase="option" />
-						<KeyCap lowerCase="command" width={KeyWidth.COMMAND} />
-						<KeyCap lowerCase="" width={KeyWidth.SPACEBAR} />
-						<KeyCap lowerCase="command" width={KeyWidth.COMMAND} />
-						<KeyCap lowerCase="option" />
-						<HalfKeyCap
-							lowerCase={<MdArrowLeft {...arrowIconParams} />}
-						/>
-						<div>
-							<HalfKeyCap
-								lowerCase={
-									<MdArrowDropUp {...arrowIconParams} />
-								}
-							/>
-							<HalfKeyCap
-								lowerCase={
-									<MdArrowDropDown {...arrowIconParams} />
-								}
-							/>
-						</div>
-						<HalfKeyCap
-							lowerCase={<MdArrowRight {...arrowIconParams} />}
-						/>
-					</>
-				)
+				return <MacKeyCaps />
 			case "linux":
 				return (
 					<>
@@ -143,15 +116,10 @@ const Keyboard = styled(RawKeyboard)`
 	width: 1064px;
 	height: 382px;
 	gap: 8px;
-	/* transform: translateX(
-		-50%
-	); // center horizontally without hard coding half of width */ // will break drag behavior
 	bottom: 10%;
 	flex-flow: row wrap;
 
 	background-color: ${(props) => props.theme.keyboardBackgroundColor};
-
-	/* background-color: red; */
 
 	${(props) => {
 		if (props.dragging)
