@@ -33,6 +33,8 @@ const DragZone = styled(RawDragZone)`
 	width: 100%;
 	height: 80%;
 	background-color: #565656;
+	display: flex;
+	justify-content: center;
 `
 
 export default DragZone

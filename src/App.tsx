@@ -41,7 +41,7 @@ const rawApp = (props: AppProps) => {
             <MacKeyboard /> */}
 				<Display />
 				<DragZone />
-				<MacKeyboard />
+				{/* <MacKeyboard /> */}
 			</main>
 		</ThemeProvider>
 	)

@@ -103,6 +103,36 @@ const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 						/>
 					</>
 				)
+			case "linux":
+				return (
+					<>
+						<KeyCap lowerCase="Ctrl" width={KeyWidth.TAB_DEL} />
+						<KeyCap lowerCase="Fn" />
+						<KeyCap lowerCase={<BsWindows {...iconParams} />} />
+						<KeyCap lowerCase="Alt" />
+						<KeyCap lowerCase="" width={KeyWidth.SPACEBAR} />
+						<KeyCap lowerCase="Alt" />
+						<KeyCap lowerCase="Ctrl" />
+						<KeyCap
+							lowerCase={<MdArrowLeft {...arrowIconParams} />}
+						/>
+						<div>
+							<HalfKeyCap
+								lowerCase={
+									<MdArrowDropUp {...arrowIconParams} />
+								}
+							/>
+							<HalfKeyCap
+								lowerCase={
+									<MdArrowDropDown {...arrowIconParams} />
+								}
+							/>
+						</div>
+						<KeyCap
+							lowerCase={<MdArrowRight {...arrowIconParams} />}
+						/>
+					</>
+				)
 			case "raspberry":
 				return (
 					<>
@@ -236,7 +266,7 @@ const Keyboard = styled(RawKeyboard)`
 	align-content: flex-start;
 
 	position: absolute;
-	left: 50%;
+
 	border: 3px solid black;
 	border-color: ${(props) => props.theme.keyboardBorderColor};
 	/* box-shadow: ${(props) => props.theme.keyboardBoxShadow}; */

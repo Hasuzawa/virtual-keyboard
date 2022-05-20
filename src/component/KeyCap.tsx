@@ -67,6 +67,13 @@ const KeyCap = styled(RawKeyCap)`
 				`
 		}
 	}}
+
+	&&:active {
+		color: ${(props) => props.theme.keyCapBackgroundColor};
+		background-color: ${(props) => props.theme.keyCapColor};
+	}
+	transition: color 0.2s ease-in-out;
+	transition: background-color 0.2s ease-in-out;
 `
 
 export const HalfKeyCap = styled(KeyCap)`

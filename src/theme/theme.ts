@@ -8,16 +8,18 @@ type KeyboardTheme = {
 
 	keyboardBorderColor?: Color
 	keyboardBoxShadow?: Color
-	// keyCapBoxShadow?: BoxShadow
+	keyCapBoxShadow?: BoxShadow
 }
 
 const windows: KeyboardTheme = {
 	keyCapColor: "#dcdcdc",
 	keyCapBackgroundColor: "#303030",
-	keyboardBackgroundColor: "",
+	keyboardBackgroundColor: "#303030",
+
+	keyCapBoxShadow: "0px 0px 5px 1px black",
 }
 
-const mac = {
+const mac: KeyboardTheme = {
 	keyCapColor: "white",
 	keyCapBackgroundColor: "black",
 	keyboardBackgroundColor: "#c0c1c3",
@@ -25,9 +27,10 @@ const mac = {
 	keyboardBoxShadow: "",
 }
 
-const linux = {
+const linux: KeyboardTheme = {
 	keyCapColor: "green",
-	keyCapBackgroundCOlor: "pink",
+	keyCapBackgroundColor: "pink",
+	keyboardBackgroundColor: "cyan",
 }
 
 const raspberry = {
