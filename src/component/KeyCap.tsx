@@ -11,7 +11,9 @@ import {
 type VerticalPlacement = "top" | "center" | "bottom"
 type HorizontalPlacement = "left" | "center" | "right"
 
-type Placement = `${VerticalPlacement}-${HorizontalPlacement}`
+type Placement =
+	| `${VerticalPlacement}-${HorizontalPlacement}`
+	| "vertical-split"
 
 interface KeyCapProps extends StyledComponent {
 	lowerCase: string | React.ReactNode
@@ -104,6 +106,11 @@ const KeyCap = styled(RawKeyCap)`
 				return css`
 					justify-content: flex-end;
 					align-items: flex-end;
+				`
+			case "vertical-split":
+				return css`
+					flex-flow: column nowrap;
+					justify-content: space-between;
 				`
 		}
 	}}

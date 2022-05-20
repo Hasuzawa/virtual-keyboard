@@ -1,6 +1,14 @@
 import styled, { css } from "styled-components"
 import { StyledComponent } from "../type"
 
+type AlignSelf =
+	| "auto"
+	| "flex-start"
+	| "flex-end"
+	| "center"
+	| "baseline"
+	| "stretch"
+
 interface SpanProps extends StyledComponent {
 	text?: string
 	paddingLeft?: number
@@ -8,6 +16,7 @@ interface SpanProps extends StyledComponent {
 	paddingTop?: number
 	paddingBottom?: number
 	fontSize?: number
+	alignSelf?: AlignSelf
 }
 
 const RawSpan = (props: SpanProps) => {
@@ -21,6 +30,7 @@ const Span = styled(RawSpan)`
 	padding-bottom: ${({ paddingBottom }) => paddingBottom}px;
 
 	font-size: ${({ fontSize }) => fontSize}px;
+	align-self: ${({ alignSelf }) => alignSelf};
 `
 
 export default Span

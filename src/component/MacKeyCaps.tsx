@@ -1,8 +1,10 @@
 import styled, { css } from "styled-components"
 import { StyledComponent } from "../type"
 import KeyCap, { HalfKeyCap } from "./KeyCap"
-import { BsWindows, BsCommand } from "react-icons/bs"
+import { BsWindows, BsCommand, BsOption } from "react-icons/bs"
 import { SiRaspberrypi } from "react-icons/si"
+import { AiOutlineGlobal } from "react-icons/ai"
+
 import {
 	MdArrowLeft,
 	MdArrowDropUp,
@@ -12,8 +14,9 @@ import {
 import { KeyWidth, arrowIconParams } from "./Keyboard"
 import Span from "./Span"
 
-const padding = 10
+const padding = 8
 const smallerFont = 14
+const iconSize = 20
 
 interface MacKeyCapsProps extends StyledComponent {}
 
@@ -154,23 +157,136 @@ const RawMacKeyCaps = (props: MacKeyCapsProps) => {
 
 			<KeyCap
 				lowerCase={
-					<Span
-						paddingTop={padding}
-						paddingRight={padding}
-						fontSize={smallerFont}
-					>
-						fn
-					</Span>
+					<>
+						<Span
+							alignSelf="flex-end"
+							paddingTop={padding}
+							paddingRight={padding}
+							fontSize={smallerFont}
+						>
+							fn
+						</Span>
+						<Span
+							alignSelf="flex-start"
+							paddingLeft={padding}
+							paddingBottom={padding}
+							fontSize={smallerFont}
+						>
+							<AiOutlineGlobal size={iconSize} />
+						</Span>
+					</>
 				}
-				placement="top-right"
+				placement="vertical-split"
+			/>
+			<KeyCap
+				lowerCase={
+					<>
+						<Span
+							alignSelf="flex-end"
+							paddingTop={padding}
+							paddingRight={padding}
+						>
+							^
+						</Span>
+						<Span
+							alignSelf="center"
+							paddingBottom={padding}
+							fontSize={smallerFont}
+						>
+							control
+						</Span>
+					</>
+				}
+				placement="vertical-split"
+			/>
+			<KeyCap
+				lowerCase={
+					<>
+						<Span
+							alignSelf="flex-end"
+							paddingTop={padding}
+							paddingRight={padding}
+						>
+							<BsOption size={iconSize} />
+						</Span>
+						<Span
+							alignSelf="center"
+							paddingBottom={padding}
+							fontSize={smallerFont}
+						>
+							option
+						</Span>
+					</>
+				}
+				placement="vertical-split"
+			/>
+			<KeyCap
+				lowerCase={
+					<>
+						<Span
+							alignSelf="flex-end"
+							paddingTop={padding}
+							paddingRight={padding}
+						>
+							<BsCommand size={iconSize} />
+						</Span>
+						<Span
+							paddingBottom={padding}
+							fontSize={smallerFont}
+							alignSelf="center"
+						>
+							command
+						</Span>
+					</>
+				}
+				width={KeyWidth.COMMAND}
+				placement="vertical-split"
 			/>
 
-			<KeyCap lowerCase="control" />
-			<KeyCap lowerCase="option" />
-			<KeyCap lowerCase="command" width={KeyWidth.COMMAND} />
 			<KeyCap lowerCase="" width={KeyWidth.SPACEBAR} />
-			<KeyCap lowerCase="command" width={KeyWidth.COMMAND} />
-			<KeyCap lowerCase="option" />
+			<KeyCap
+				lowerCase={
+					<>
+						<Span
+							alignSelf="flex-start"
+							paddingTop={padding}
+							paddingLeft={padding}
+						>
+							<BsCommand size={iconSize} />
+						</Span>
+						<Span
+							paddingBottom={padding}
+							fontSize={smallerFont}
+							alignSelf="center"
+						>
+							command
+						</Span>
+					</>
+				}
+				width={KeyWidth.COMMAND}
+				placement="vertical-split"
+			/>
+			<KeyCap
+				lowerCase={
+					<>
+						<Span
+							alignSelf="flex-start"
+							paddingLeft={padding}
+							paddingTop={padding}
+						>
+							<BsOption size={iconSize} />
+						</Span>
+						<Span
+							alignSelf="center"
+							paddingBottom={padding}
+							fontSize={smallerFont}
+						>
+							option
+						</Span>
+					</>
+				}
+				placement="vertical-split"
+			/>
 			<HalfKeyCap lowerCase={<MdArrowLeft {...arrowIconParams} />} />
 			<div>
 				<HalfKeyCap

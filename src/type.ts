@@ -6,7 +6,7 @@ export interface StyledComponent {
 export type OS = "windows" | "mac" | "linux" | "raspberry"
 
 export type Color = string
-// unless we want to spend a lot of effort just to make a type that is neither indicative nor accurate,
+// unless we want to spend a lot of effort just to make a type that is neither indicative nor helpful,
 // this is probably better
 
 export type BoxShadow = string

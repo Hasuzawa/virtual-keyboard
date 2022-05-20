@@ -1,7 +1,8 @@
 ## Virtual Keyboard
 
 This project servers three purposes. First, to compare the special keys on different keyboards. Second, to provide a virtual keyboard on screen. Third, to provide an online model for designing, buying keyboards.
-<!-- The virtual keyboards are almost 1:1 true scale. -->
+
+I have stayed reasonably faithful to the original, but have taken artistic liberty to make the keyboard more pleasing to eyes on the web and better contrast the difference between each keyboards.
 
 ## System Design
 

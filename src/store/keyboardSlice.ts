@@ -3,6 +3,60 @@ import { RootState } from "./store"
 import { OS } from "../type"
 import { selectRandom } from "../util/function"
 
+const lowerCaseAlphabet = [
+	"a",
+	"b",
+	"c",
+	"d",
+	"e",
+	"f",
+	"g",
+	"h",
+	"i",
+	"j",
+	"k",
+	"l",
+	"m",
+	"n",
+	"o",
+	"p",
+	"q",
+	"r",
+	"s",
+	"t",
+	"u",
+	"v",
+	"w",
+	"x",
+	"y",
+	"z",
+] as const
+type LowerCaseAlphabet = typeof lowerCaseAlphabet[number]
+const digit = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] as const
+type Digit = typeof digit[number]
+type SpecialCharacters =
+	| "`"
+	| "-"
+	| "="
+	| "["
+	| "]"
+	| "\\"
+	| ";"
+	| "'"
+	| ","
+	| "."
+	| "/"
+type NonPrintable = " " | "\t"
+type FunctionalKey =
+	| "Tab"
+	| "Backspace"
+	| "CapsLock"
+	| "Enter"
+	| "Control"
+	| "Alt"
+type ArrowKey = "ArrowLeft" | "ArrowUp" | "ArrowDown" | "ArrowRight"
+// don't forget Dead, Meta keys!
+
 type Key =
 	| "`"
 	| "1"
