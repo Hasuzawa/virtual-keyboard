@@ -4,6 +4,7 @@ This project servers three purposes. First, to compare the special keys on diffe
 
 I have stayed reasonably faithful to the original, but have taken artistic liberty to make the keyboard more pleasing to eyes on the web and better contrast the difference between each keyboards.
 
+
 ## System Design
 
 <img src="./README.md.d/keyboard_fsm.svg" alt="Keyboard as a Finite State Machine">
@@ -21,5 +22,13 @@ This is (negation of) exclusive or, so we can use ^ in code. (JS, TS does not su
 While this is quite a trivial state machine, knowing that there are around 50 keys on a keyboard, every slight improvement in code design or efficiency is a big gain.
 
 
+## Copyright, Logo
+
+The developer is not affiliated with the following companies.
+
+Windows™ is a rightful property of Microsoft.
+Mac™ is a rightful property of Apple.
+Linux™ is a rightful property of Linux Foundation.
+Raspberry Pi™ is a rightful property of Raspberry Pi Foundation.
 
 ## Changelog

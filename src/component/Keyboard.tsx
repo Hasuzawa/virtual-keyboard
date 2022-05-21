@@ -1,4 +1,4 @@
-import styled, { ThemeProvider, css } from "styled-components"
+import styled, { ThemeProvider, css, keyframes } from "styled-components"
 import { StyledComponent } from "../type"
 import { motion } from "framer-motion"
 import { forwardRef } from "react"
@@ -18,6 +18,7 @@ import {
 import WindowKeyboard from "./WindowKeyboard"
 import RaspberryPiKeyCaps from "./RaspberryPiKeyCaps"
 import MacKeyCaps from "./MacKeyCaps"
+import { rainbowRotate } from "../animation/rainbow"
 
 interface KeyboardProps extends StyledComponent {
 	dragging: boolean
@@ -97,9 +98,14 @@ const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 	)
 })
 
+const hueRotate = keyframes`
+	0% {filter: hue-rotate(0deg);}
+	50% {filter: hue-rotate(360deg);}
+	100% {filter: hue-rotate(-360deg);}
+
+`
+
 const Keyboard = styled(RawKeyboard)`
-	/* width: 1000px;
-	height: 400px; */
 	display: inline-flex;
 	justify-content: flex-start;
 	align-items: flex-start;
@@ -109,8 +115,7 @@ const Keyboard = styled(RawKeyboard)`
 
 	border: 3px solid black;
 	border-color: ${(props) => props.theme.keyboardBorderColor};
-	/* box-shadow: ${(props) => props.theme.keyboardBoxShadow}; */
-	/* box-shadow: inset 0px 0px 5px 0px black; */
+
 	border-radius: 10px;
 	padding: 12px;
 	width: 1064px;
@@ -120,6 +125,11 @@ const Keyboard = styled(RawKeyboard)`
 	flex-flow: row wrap;
 
 	background-color: ${(props) => props.theme.keyboardBackgroundColor};
+	/* background: linear-gradient(120deg, red, orange, yellow, green, cyan, indigo, purple); */
+
+	/* animation: ${rainbowRotate} 10s infinite linear; */
+	/* background: radial-gradient(ellipse at top left, red, purple);
+	animation: ${hueRotate} 10s infinite linear; */
 
 	${(props) => {
 		if (props.dragging)

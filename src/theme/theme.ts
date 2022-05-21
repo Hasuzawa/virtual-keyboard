@@ -28,9 +28,9 @@ const mac: KeyboardTheme = {
 }
 
 const linux: KeyboardTheme = {
-	keyCapColor: "green",
-	keyCapBackgroundColor: "pink",
-	keyboardBackgroundColor: "cyan",
+	keyCapColor: "black",
+	keyCapBackgroundColor: "transparent",
+	keyboardBackgroundColor: "transparent",
 }
 
 const raspberry = {

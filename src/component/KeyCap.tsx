@@ -51,6 +51,7 @@ const KeyCap = styled(RawKeyCap)`
 	/* flex-direction: column;
 	flex-wrap: nowrap; */
 	border-radius: 6px;
+	/* border: 2px solid black; */
 	/* font-size: 20px; */
 
 	/* justify-content: center;
