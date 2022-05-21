@@ -22,7 +22,7 @@ import { rainbowRotate } from "../animation/rainbow"
 
 interface KeyboardProps extends StyledComponent {
 	dragging: boolean
-	setDragging: any
+	setDragging: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export enum KeyWidth {

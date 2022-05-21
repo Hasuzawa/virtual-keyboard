@@ -21,8 +21,16 @@ This is (negation of) exclusive or, so we can use ^ in code. (JS, TS does not su
 
 While this is quite a trivial state machine, knowing that there are around 50 keys on a keyboard, every slight improvement in code design or efficiency is a big gain.
 
+## Preview
 
-## Copyright, Logo
+These are actual screenshots of the virtual keyboards.
+
+<img src="./README.md.d/windows_keyboard.png" alt="Windows keyboard">
+<img src="./README.md.d/mac_keyboard.png" alt="Mac keyboard">
+<img src="./README.md.d/raspberry_pi_keyboard.png" alt="Raspberry Pi keyboard">
+
+
+## Copyright, Legal
 
 The developer is not affiliated with the following companies.
 
@@ -30,5 +38,7 @@ Windows™ is a rightful property of Microsoft.
 Mac™ is a rightful property of Apple.
 Linux™ is a rightful property of Linux Foundation.
 Raspberry Pi™ is a rightful property of Raspberry Pi Foundation.
+
+I want to make it clear that since I don't own everything in this project, if you want to use this for commercial or closed source purposes, you need approval from the respective owner. The developer will not be held responsible for neglection on observing the copyright status of this project.
 
 ## Changelog

@@ -12,20 +12,16 @@ import { useState } from "react"
 interface SelectOSProps extends StyledComponent {}
 
 const RawSelectOS = (props: SelectOSProps) => {
-	const os = useAppSelector(selectOS)
+	const selectedOS = useAppSelector(selectOS)
 	// const [ OSArray ] = useState<OS[]>(shuffleArray(allOS))
 	const OSArray: OS[] = ["windows", "mac", "linux", "raspberry"]
 
 	return (
 		<div className={props.className}>
 			{/* if shuffle here, the order will change everytime this component changes */}
-			{OSArray.map((x, idx) => (
-				<OSButton os={x} />
+			{OSArray.map((os) => (
+				<OSButton os={os} key={os} selected={os === selectedOS} />
 			))}
-			{/* <OSButton os="windows" />
-			<OSButton os="mac" />
-			<OSButton os="linux" />
-			<OSButton os="raspberry" /> */}
 		</div>
 	)
 }
@@ -38,7 +34,8 @@ const SelectOS = styled(RawSelectOS)`
 	top: 20px;
 	width: 100px;
 	height: 300px;
-	background-color: lightgrey;
+	/* background-color: lightgrey; */
+	gap: 10px;
 `
 
 export default SelectOS

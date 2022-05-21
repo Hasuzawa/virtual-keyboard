@@ -1,6 +1,6 @@
 import { OS, Color, BoxShadow } from "../type"
 
-type KeyboardTheme = {
+type KeyboardTheme = Readonly<{
 	keyCapColor: Color
 	keyCapBackgroundColor: Color
 	// keyboardColor: Color,
@@ -9,7 +9,9 @@ type KeyboardTheme = {
 	keyboardBorderColor?: Color
 	keyboardBoxShadow?: Color
 	keyCapBoxShadow?: BoxShadow
-}
+
+	// buttonColor: Color
+}>
 
 const windows: KeyboardTheme = {
 	keyCapColor: "#dcdcdc",

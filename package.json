@@ -1,6 +1,10 @@
 {
   "name": "virtual-keyboard",
-  "version": "0.1.0",
+  "version": "0.7.0",
+  "description": "A virtual Keyboard on the web.",
+  "keyword": ["keyboard","OS","customize"],
+  "homepage": "https://github.com/Hasuzawa/virtual-keyboard",
+  "license": "",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",

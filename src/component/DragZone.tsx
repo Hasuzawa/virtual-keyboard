@@ -31,7 +31,7 @@ const RawDragZone = (props: DragZoneProps) => {
 			<Box ref={divRef} />
 			<Trial ref={divRef} /> */}
 			<SelectOS />
-			<ColorPicker setColor={setAreaColor} />
+			<ColorPicker setColor={setAreaColor} defaultColor={areaColor} />
 		</motion.div>
 	)
 }
@@ -39,7 +39,7 @@ const RawDragZone = (props: DragZoneProps) => {
 const DragZone = styled(RawDragZone)`
 	position: relative;
 	width: 100%;
-	height: 80%;
+	height: 100%;
 	/* background-color: #565656; */
 	display: flex;
 	justify-content: center;

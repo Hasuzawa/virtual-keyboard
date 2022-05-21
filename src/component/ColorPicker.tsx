@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { StyledComponent } from "../type"
 
 interface ColorPickProps extends StyledComponent {
+	defaultColor: string
 	setColor: React.Dispatch<React.SetStateAction<string>>
 }
 
@@ -12,6 +13,7 @@ const RawColorPick = (props: ColorPickProps) => {
 	return (
 		<input
 			type="color"
+			defaultValue={props.defaultColor}
 			onChange={handleChange}
 			className={props.className}
 		/>

@@ -4,22 +4,33 @@ import { useAppDispatch, useAppSelector } from "../store/useStore"
 import { selectOS, setOS } from "../store/keyboardSlice"
 import { BsWindows, BsApple } from "react-icons/bs"
 import { FaLinux, FaRaspberryPi } from "react-icons/fa"
+import { useState } from "react"
 
 interface OSButtonProps extends StyledComponent {
 	os: OS
-	// selected: boolean
+	selected: boolean
 }
+
+const defaultColor = "#000000"
 
 const windowsColor = "#0078D4"
 const macColor = "#A2AAAD"
 const linuxColor = "#25c725"
 const raspberryColor = "#CD2355"
 
+// const color =
+
 const iconSize = 30
 
+// const iconParams = {
+// 	size: iconSize,
+// 	color: (os: OS, selected: boolean) => selected ? color[os] : defaultColor
+// }
+
 const RawOSButton = (props: OSButtonProps) => {
-	const os = useAppSelector(selectOS)
+	const { os, selected } = props
 	const dispatch = useAppDispatch()
+	const [hover, setHover] = useState<boolean>(false)
 
 	const renderIcon = () => {
 		switch (props.os) {
@@ -38,6 +49,8 @@ const RawOSButton = (props: OSButtonProps) => {
 		<button
 			className={props.className}
 			onClick={() => dispatch(setOS(props.os))}
+			onMouseOver={() => setHover(true)}
+			onMouseLeave={() => setHover(false)}
 		>
 			{renderIcon()}
 		</button>
@@ -51,20 +64,12 @@ export const OSButton = styled(RawOSButton)`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: lightcoral;
 
-	outline: none;
+	transition: background-color 0.3s;
 
 	&&:hover {
 		background-color: rgba(255, 255, 255, 0.5);
 	}
-
-	&&:active {
-	}
-
-	/* &&:focus {
-		box-shadow: 0px 0px 5px 5px black; // change to each OS's color later
-	} */
 `
 
 const WindowOS = styled(OSButton)``

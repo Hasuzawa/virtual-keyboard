@@ -39,7 +39,7 @@ const rawApp = (props: AppProps) => {
                 <textarea />
             </div>
             <MacKeyboard /> */}
-				<Display />
+				{/* <Display /> */}
 				<DragZone />
 				{/* <MacKeyboard /> */}
 			</main>
