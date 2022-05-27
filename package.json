@@ -2,9 +2,20 @@
   "name": "virtual-keyboard",
   "version": "0.7.0",
   "description": "A virtual Keyboard on the web.",
-  "keyword": ["keyboard","OS","customize"],
+  "keyword": ["keyboard","OS","UI"],
   "homepage": "https://github.com/Hasuzawa/virtual-keyboard",
-  "license": "",
+  "bugs": {
+	"url": "https://github.com/Hasuzawa/virtual-keyboard"
+  },
+  "license": "CC BY-NC 4.0",
+  "author": {
+	  "name": "Hasuzawa",
+	  "email": "hasuzawa.yuichi.international@gmail.com"
+  },
+  "repository": {
+	"type": "git",
+	"url": "https://github.com/Hasuzawa/virtual-keyboard"
+  },
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",

@@ -7,6 +7,9 @@ I have stayed reasonably faithful to the original, but have taken artistic liber
 
 ## System Design
 
+### KeyCap
+
+<details open>
 <img src="./README.md.d/keyboard_fsm.svg" alt="Keyboard as a Finite State Machine">
 Since shifting and cap lock are binary conditions, we can make a simple truth table:
 
@@ -20,6 +23,15 @@ Since shifting and cap lock are binary conditions, we can make a simple truth ta
 This is (negation of) exclusive or, so we can use ^ in code. (JS, TS does not support ^ between boolean, use !== instead)
 
 While this is quite a trivial state machine, knowing that there are around 50 keys on a keyboard, every slight improvement in code design or efficiency is a big gain.
+
+</details>
+
+### Keyboard
+
+<details open>
+For the keyboards, there are many ways to implement it. You can hard-code all the different layout for every single one but that is not scalable. And about half of the keys will be alphabets so it is not following the DRY principle either. We can also make a class 
+
+</details>
 
 ## Preview
 
