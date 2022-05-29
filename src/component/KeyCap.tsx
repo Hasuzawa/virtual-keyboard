@@ -11,7 +11,7 @@ import {
 type VerticalPlacement = "top" | "center" | "bottom"
 type HorizontalPlacement = "left" | "center" | "right"
 
-type Placement =
+export type Placement =
 	| `${VerticalPlacement}-${HorizontalPlacement}`
 	| "vertical-split"
 

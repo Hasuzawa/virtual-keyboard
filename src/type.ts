@@ -10,3 +10,61 @@ export type Color = string
 // this is probably better
 
 export type BoxShadow = string
+
+const digit = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"] as const
+export type Digit = typeof digit[number]
+
+const lowerCaseAlphabet = [
+	"a",
+	"b",
+	"c",
+	"d",
+	"e",
+	"f",
+	"g",
+	"h",
+	"i",
+	"j",
+	"k",
+	"l",
+	"m",
+	"n",
+	"o",
+	"p",
+	"q",
+	"r",
+	"s",
+	"t",
+	"u",
+	"v",
+	"w",
+	"x",
+	"y",
+	"z",
+] as const
+export type LowerCaseAlphabet = typeof lowerCaseAlphabet[number]
+
+export type SpecialCharacters =
+	| "`"
+	| "-"
+	| "="
+	| "["
+	| "]"
+	| "\\"
+	| ";"
+	| "'"
+	| ","
+	| "."
+	| "/"
+
+type NonPrintable = " " | "\t"
+export type FunctionalKey =
+	| "tab"
+	| "backspace"
+	| "delete"
+	| "capsLock"
+	| "enter"
+	| "control"
+	| "alt"
+type ArrowKey = "ArrowLeft" | "ArrowUp" | "ArrowDown" | "ArrowRight"
+// don't forget Dead, Meta keys!

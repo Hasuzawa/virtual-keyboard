@@ -19,6 +19,7 @@ import WindowKeyboard from "./WindowKeyboard"
 import RaspberryPiKeyCaps from "./RaspberryPiKeyCaps"
 import MacKeyCaps from "./MacKeyCaps"
 import { rainbowRotate } from "../animation/rainbow"
+import keyCapData from "../KeyCapData"
 
 interface KeyboardProps extends StyledComponent {
 	dragging: boolean
@@ -93,17 +94,14 @@ const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 			onDragEnd={() => setDragging(false)}
 			className={props.className}
 		>
-			{getKeys()}
+			{/* {getKeys()} */}
+			{"`1234567890-=".split("").map((s: string) => (
+				<KeyCap {...keyCapData["default"][s]}></KeyCap>
+			))}
+			<KeyCap {...keyCapData["windows"]["backspace"]} />
 		</motion.div>
 	)
 })
-
-const hueRotate = keyframes`
-	0% {filter: hue-rotate(0deg);}
-	50% {filter: hue-rotate(360deg);}
-	100% {filter: hue-rotate(-360deg);}
-
-`
 
 const Keyboard = styled(RawKeyboard)`
 	display: inline-flex;
@@ -125,11 +123,6 @@ const Keyboard = styled(RawKeyboard)`
 	flex-flow: row wrap;
 
 	background-color: ${(props) => props.theme.keyboardBackgroundColor};
-	/* background: linear-gradient(120deg, red, orange, yellow, green, cyan, indigo, purple); */
-
-	/* animation: ${rainbowRotate} 10s infinite linear; */
-	/* background: radial-gradient(ellipse at top left, red, purple);
-	animation: ${hueRotate} 10s infinite linear; */
 
 	${(props) => {
 		if (props.dragging)
