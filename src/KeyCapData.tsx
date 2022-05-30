@@ -6,6 +6,7 @@ import {
 	LowerCaseAlphabet,
 	SpecialCharacters,
 	FunctionalKey,
+	LayoutOS,
 } from "./type"
 
 enum KeyWidth {
@@ -35,88 +36,221 @@ interface KeyCapProps {
 	placement?: Placement
 }
 
-type KeyCapData = {
+type KeyboardLayout = {
 	default: Partial<Readonly<Record<LowerCaseKey, KeyCapProps>>>
 	windows: Partial<Readonly<Record<LowerCaseKey, KeyCapProps>>>
+	mac: Partial<Readonly<Record<LowerCaseKey, KeyCapProps>>>
+	linux: Partial<Readonly<Record<LowerCaseKey, KeyCapProps>>>
+	raspberry: Partial<Readonly<Record<LowerCaseKey, KeyCapProps>>>
 }
 
-const keyCapData: KeyCapData = {
-	default: {
-		"`": {
-			lowerCase: "`",
-			upperCase: "~",
+// const keyCapData: KeyCapData = {
+class KeyCapData {
+	private static readonly keyboardLayout: KeyboardLayout = {
+		default: {
+			"`": {
+				lowerCase: "`",
+				upperCase: "~",
+			},
+			"1": {
+				lowerCase: "1",
+				upperCase: "!",
+			},
+			"2": {
+				lowerCase: "2",
+				upperCase: "@",
+			},
+			"3": {
+				lowerCase: "3",
+				upperCase: "#",
+			},
+			"4": {
+				lowerCase: "4",
+				upperCase: "$",
+			},
+			"5": {
+				lowerCase: "5",
+				upperCase: "%",
+			},
+			"6": {
+				lowerCase: "6",
+				upperCase: "^",
+			},
+			"7": {
+				lowerCase: "7",
+				upperCase: "&",
+			},
+			"8": {
+				lowerCase: "8",
+				upperCase: "*",
+			},
+			"9": {
+				lowerCase: "9",
+				upperCase: "(",
+			},
+			"0": {
+				lowerCase: "0",
+				upperCase: ")",
+			},
+			"-": {
+				lowerCase: "-",
+				upperCase: "_",
+			},
+			"=": {
+				lowerCase: "=",
+				upperCase: "+",
+			},
+			q: {
+				lowerCase: "q",
+				upperCase: "Q",
+			},
+			w: {
+				lowerCase: "w",
+				upperCase: "W",
+			},
+			e: {
+				lowerCase: "e",
+				upperCase: "E",
+			},
+			r: {
+				lowerCase: "r",
+				upperCase: "R",
+			},
+			t: {
+				lowerCase: "t",
+				upperCase: "T",
+			},
+			y: {
+				lowerCase: "y",
+				upperCase: "Y",
+			},
+			u: {
+				lowerCase: "u",
+				upperCase: "U",
+			},
+			i: {
+				lowerCase: "i",
+				upperCase: "I",
+			},
+			o: {
+				lowerCase: "o",
+				upperCase: "O",
+			},
+			p: {
+				lowerCase: "p",
+				upperCase: "P",
+			},
+			"[": {
+				lowerCase: "[",
+				upperCase: "{",
+			},
+			"]": {
+				lowerCase: "]",
+				upperCase: "}",
+			},
+			"\\": {
+				lowerCase: "\\",
+				upperCase: "|",
+			},
+			a: {
+				lowerCase: "a",
+				upperCase: "A",
+			},
+			s: {
+				lowerCase: "s",
+				upperCase: "S",
+			},
+			d: {
+				lowerCase: "d",
+				upperCase: "D",
+			},
+			f: {
+				lowerCase: "f",
+				upperCase: "F",
+			},
+			g: {
+				lowerCase: "g",
+				upperCase: "G",
+			},
+			h: {
+				lowerCase: "h",
+				upperCase: "H",
+			},
+			j: {
+				lowerCase: "j",
+				upperCase: "J",
+			},
+			k: {
+				lowerCase: "k",
+				upperCase: "K",
+			},
+			l: {
+				lowerCase: "l",
+				upperCase: "L",
+			},
+			";": {
+				lowerCase: ";",
+				upperCase: ":",
+			},
+			"'": {
+				lowerCase: "'",
+				upperCase: '"',
+			},
 		},
-		"1": {
-			lowerCase: "1",
-			upperCase: "!",
+		windows: {
+			backspace: {
+				lowerCase: (
+					<Span paddingRight={padding} fontSize={smallerFont}>
+						Backspace
+					</Span>
+				),
+				width: KeyWidth.TAB_DEL,
+				placement: "center-right",
+			},
+			tab: {
+				lowerCase: (
+					<Span paddingLeft={padding} fontSize={smallerFont}>
+						Tab
+					</Span>
+				),
+				width: KeyWidth.TAB_DEL,
+				placement: "center-left",
+			},
+			capsLock: {
+				lowerCase: (
+					<Span paddingLeft={padding} fontSize={smallerFont}>
+						Caps
+					</Span>
+				),
+				width: KeyWidth.CAP_RETURN,
+				placement: "center-left",
+			},
+			enter: {
+				lowerCase: (
+					<Span paddingRight={padding} fontSize={smallerFont}>
+						Enter
+					</Span>
+				),
+				width: KeyWidth.CAP_RETURN,
+				placement: "center-right",
+			},
 		},
-		"2": {
-			lowerCase: "2",
-			upperCase: "@",
-		},
-		"3": {
-			lowerCase: "3",
-			upperCase: "#",
-		},
-		"4": {
-			lowerCase: "4",
-			upperCase: "$",
-		},
-		"5": {
-			lowerCase: "5",
-			upperCase: "%",
-		},
-		"6": {
-			lowerCase: "6",
-			upperCase: "^",
-		},
-		"7": {
-			lowerCase: "7",
-			upperCase: "&",
-		},
-		"8": {
-			lowerCase: "8",
-			upperCase: "*",
-		},
-		"9": {
-			lowerCase: "9",
-			upperCase: "(",
-		},
-		"0": {
-			lowerCase: "0",
-			upperCase: ")",
-		},
-		"-": {
-			lowerCase: "-",
-			upperCase: "_",
-		},
-		"=": {
-			lowerCase: "=",
-			upperCase: "+",
-		},
-	},
-	windows: {
-		backspace: {
-			lowerCase: (
-				<Span paddingRight={padding} fontSize={smallerFont}>
-					Backspace
-				</Span>
-			),
-			width: KeyWidth.TAB_DEL,
-			placement: "center-right",
-		},
-	},
-	// mac: {
+		mac: {},
+		linux: {},
+		raspberry: {},
+	}
 
-	// },
-	// linux: {
-
-	// },
-	// raspberry: {
-
-	// },
+	public static getKeyCapProps(
+		os: LayoutOS,
+		lowerCaseKey: LowerCaseKey
+	): KeyCapProps {
+		return (
+			this.keyboardLayout[os][lowerCaseKey] ??
+			this.keyboardLayout.default[lowerCaseKey]!
+		)
+	}
 }
 
 // const getKeyCapData = new Proxy()
 
-export default keyCapData
+export default KeyCapData

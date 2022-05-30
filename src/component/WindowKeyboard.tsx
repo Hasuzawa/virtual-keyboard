@@ -20,7 +20,7 @@ const smallerFont = 14
 const RawWindowKeyboard = (props: WindowKeyboardProps) => {
 	return (
 		<>
-			<KeyCap lowerCase="`" upperCase="~" />
+			{/* <KeyCap lowerCase="`" upperCase="~" />
 			<KeyCap lowerCase="1" upperCase="!" />
 			<KeyCap lowerCase="2" upperCase="@" />
 			<KeyCap lowerCase="3" upperCase="#" />
@@ -64,9 +64,9 @@ const RawWindowKeyboard = (props: WindowKeyboardProps) => {
 			<KeyCap lowerCase="p" upperCase="P" />
 			<KeyCap lowerCase="[" upperCase="{" />
 			<KeyCap lowerCase="]" upperCase="}" />
-			<KeyCap lowerCase="\" upperCase="|" />
+			<KeyCap lowerCase="\" upperCase="|" /> */}
 
-			<KeyCap
+			{/* <KeyCap
 				lowerCase={
 					<Span paddingLeft={padding} fontSize={smallerFont}>
 						Caps
@@ -87,7 +87,7 @@ const RawWindowKeyboard = (props: WindowKeyboardProps) => {
 			<KeyCap lowerCase="l" upperCase="L" />
 
 			<KeyCap lowerCase=";" upperCase=":" />
-			<KeyCap lowerCase="'" upperCase='"' />
+			<KeyCap lowerCase="'" upperCase='"' /> */}
 			<KeyCap
 				lowerCase={
 					<Span paddingRight={padding} fontSize={smallerFont}>

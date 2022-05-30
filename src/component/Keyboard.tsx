@@ -18,8 +18,7 @@ import {
 import WindowKeyboard from "./WindowKeyboard"
 import RaspberryPiKeyCaps from "./RaspberryPiKeyCaps"
 import MacKeyCaps from "./MacKeyCaps"
-import { rainbowRotate } from "../animation/rainbow"
-import keyCapData from "../KeyCapData"
+import KeyCapData from "../KeyCapData"
 
 interface KeyboardProps extends StyledComponent {
 	dragging: boolean
@@ -42,6 +41,7 @@ export const arrowIconParams = {
 const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 	const { setDragging } = props
 	const os = useAppSelector(selectOS)
+	// const keyCapData = new KeyCapData()
 
 	const getKeys = () => {
 		switch (os) {
@@ -96,9 +96,19 @@ const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 		>
 			{/* {getKeys()} */}
 			{"`1234567890-=".split("").map((s: string) => (
-				<KeyCap {...keyCapData["default"][s]}></KeyCap>
+				<KeyCap {...KeyCapData.getKeyCapProps("windows", s as any)} />
 			))}
-			<KeyCap {...keyCapData["windows"]["backspace"]} />
+
+			<KeyCap {...KeyCapData.getKeyCapProps("windows", "backspace")} />
+			<KeyCap {...KeyCapData.getKeyCapProps("windows", "tab")} />
+			{"qwertyuiop[]\\".split("").map((s: string) => (
+				<KeyCap {...KeyCapData.getKeyCapProps("windows", s as any)} />
+			))}
+			<KeyCap {...KeyCapData.getKeyCapProps("windows", "capsLock")} />
+			{"asdfghjkl;'".split("").map((s: string) => (
+				<KeyCap {...KeyCapData.getKeyCapProps("windows", s as any)} />
+			))}
+			<KeyCap {...KeyCapData.getKeyCapProps("windows", "enter")} />
 		</motion.div>
 	)
 })

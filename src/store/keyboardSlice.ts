@@ -3,8 +3,6 @@ import { RootState } from "./store"
 import { OS } from "../type"
 import { selectRandom } from "../util/function"
 
-
-
 type Key =
 	| "`"
 	| "1"
