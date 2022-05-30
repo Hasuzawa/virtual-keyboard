@@ -9,7 +9,7 @@ import {
 	LayoutOS,
 	ArrowKey,
 } from "../../type"
-import { BsWindows, BsCommand } from "react-icons/bs"
+import { BsWindows, BsCommand, BsOption } from "react-icons/bs"
 import {
 	MdArrowLeft,
 	MdArrowDropUp,
@@ -17,6 +17,7 @@ import {
 	MdArrowRight,
 } from "react-icons/md"
 import KeyCap, { HalfKeyCap } from "./KeyCap"
+import { AiOutlineGlobal } from "react-icons/ai"
 
 enum KeyWidth {
 	STANDARD = 64,
@@ -43,6 +44,10 @@ const arrowIconParams = {
 	size: 30,
 }
 
+const iconSize = {
+	mac: 20,
+}
+
 type LowerCaseKey =
 	| LowerCaseAlphabet
 	| Digit
@@ -57,13 +62,15 @@ interface KeyCapProps {
 	placement?: Placement
 }
 
-type KeyboardLayout = {
-	default: Partial<Readonly<Record<LowerCaseKey, KeyCapProps>>>
-	windows: Partial<Readonly<Record<LowerCaseKey, KeyCapProps>>>
-	mac: Partial<Readonly<Record<LowerCaseKey, KeyCapProps>>>
-	linux: Partial<Readonly<Record<LowerCaseKey, KeyCapProps>>>
-	raspberry: Partial<Readonly<Record<LowerCaseKey, KeyCapProps>>>
-}
+type KeyboardLayout = Record<
+	LayoutOS,
+	Partial<Readonly<Record<LowerCaseKey, KeyCapProps>>>
+>
+// default: Partial<Readonly<Record<LowerCaseKey, KeyCapProps>>>
+// windows: Partial<Readonly<Record<LowerCaseKey, KeyCapProps>>>
+// mac: Partial<Readonly<Record<LowerCaseKey, KeyCapProps>>>
+// linux: Partial<Readonly<Record<LowerCaseKey, KeyCapProps>>>
+// raspberry: Partial<Readonly<Record<LowerCaseKey, KeyCapProps>>>
 
 // const this: this = {
 class KeyboardData {
@@ -358,7 +365,7 @@ class KeyboardData {
 			fn: {
 				lowerCase: <Span fontSize={smallerFont.windows}>Fn</Span>,
 			},
-			windowsKey: {
+			logoKey: {
 				lowerCase: <BsWindows size={20} />,
 			},
 			leftAlt: {
@@ -428,6 +435,166 @@ class KeyboardData {
 				width: KeyWidth.CAP_RETURN,
 				placement: "bottom-right",
 			},
+			leftShift: {
+				lowerCase: (
+					<Span
+						paddingLeft={padding.mac}
+						paddingBottom={padding.mac}
+						fontSize={smallerFont.mac}
+					>
+						shift
+					</Span>
+				),
+				width: KeyWidth.SHIFT,
+				placement: "bottom-left",
+			},
+			rightShift: {
+				lowerCase: (
+					<Span
+						paddingRight={padding.mac}
+						paddingBottom={padding.mac}
+						fontSize={smallerFont.mac}
+					>
+						shift
+					</Span>
+				),
+				width: KeyWidth.SHIFT,
+				placement: "bottom-right",
+			},
+			fn: {
+				lowerCase: (
+					<>
+						<Span
+							alignSelf="flex-end"
+							paddingTop={padding.mac}
+							paddingRight={padding.mac}
+							fontSize={smallerFont.mac}
+						>
+							fn
+						</Span>
+						<Span
+							alignSelf="flex-start"
+							paddingLeft={padding.mac}
+							paddingBottom={padding.mac}
+							fontSize={smallerFont.mac}
+						>
+							<AiOutlineGlobal size={iconSize.mac} />
+						</Span>
+					</>
+				),
+				placement: "vertical-split",
+			},
+			control: {
+				lowerCase: (
+					<>
+						<Span
+							alignSelf="flex-end"
+							paddingTop={padding.mac}
+							paddingRight={padding.mac}
+						>
+							^
+						</Span>
+						<Span
+							alignSelf="center"
+							paddingBottom={padding.mac}
+							fontSize={smallerFont.mac}
+						>
+							control
+						</Span>
+					</>
+				),
+				placement: "vertical-split",
+			},
+			leftOption: {
+				lowerCase: (
+					<>
+						<Span
+							alignSelf="flex-end"
+							paddingTop={padding.mac}
+							paddingRight={padding.mac}
+						>
+							<BsOption size={iconSize.mac} />
+						</Span>
+						<Span
+							alignSelf="center"
+							paddingBottom={padding.mac}
+							fontSize={smallerFont.mac}
+						>
+							option
+						</Span>
+					</>
+				),
+				placement: "vertical-split",
+			},
+			leftCommand: {
+				lowerCase: (
+					<>
+						<Span
+							alignSelf="flex-end"
+							paddingTop={padding.mac}
+							paddingRight={padding.mac}
+						>
+							<BsCommand size={iconSize.mac} />
+						</Span>
+						<Span
+							paddingBottom={padding.mac}
+							fontSize={smallerFont.mac}
+							alignSelf="center"
+						>
+							command
+						</Span>
+					</>
+				),
+				width: KeyWidth.COMMAND,
+				placement: "vertical-split",
+			},
+			spacebar: {
+				lowerCase: "",
+				width: KeyWidth.SPACEBAR,
+			},
+			rightOption: {
+				lowerCase: (
+					<>
+						<Span
+							alignSelf="flex-start"
+							paddingLeft={padding.mac}
+							paddingTop={padding.mac}
+						>
+							<BsOption size={iconSize.mac} />
+						</Span>
+						<Span
+							alignSelf="center"
+							paddingBottom={padding.mac}
+							fontSize={smallerFont.mac}
+						>
+							option
+						</Span>
+					</>
+				),
+				placement: "vertical-split",
+			},
+			rightCommand: {
+				lowerCase: (
+					<>
+						<Span
+							alignSelf="flex-start"
+							paddingTop={padding.mac}
+							paddingLeft={padding.mac}
+						>
+							<BsCommand size={iconSize.mac} />
+						</Span>
+						<Span
+							paddingBottom={padding.mac}
+							fontSize={smallerFont.mac}
+							alignSelf="center"
+						>
+							command
+						</Span>
+					</>
+				),
+				width: KeyWidth.COMMAND,
+				placement: "vertical-split",
+			},
 		},
 		linux: {},
 		raspberry: {},
@@ -467,7 +634,7 @@ class KeyboardData {
 				<KeyCap {...this.getKeyCapProps(os, "rightShift")} />
 				<KeyCap {...this.getKeyCapProps(os, "leftCtrl")} />
 				<KeyCap {...this.getKeyCapProps(os, "fn")} />
-				<KeyCap {...this.getKeyCapProps(os, "windowsKey")} />
+				<KeyCap {...this.getKeyCapProps(os, "logoKey")} />
 				<KeyCap {...this.getKeyCapProps(os, "leftAlt")} />
 				<KeyCap {...this.getKeyCapProps(os, "spacebar")} />
 				<KeyCap {...this.getKeyCapProps(os, "rightAlt")} />
@@ -505,12 +672,12 @@ class KeyboardData {
 				))}
 				<KeyCap {...this.getKeyCapProps(os, "rightShift")} />
 				<KeyCap {...this.getKeyCapProps(os, "fn")} />
-				<KeyCap {...this.getKeyCapProps(os, "leftCtrl")} />
-				<KeyCap {...this.getKeyCapProps(os, "windowsKey")} />
-				<KeyCap {...this.getKeyCapProps(os, "leftAlt")} />
+				<KeyCap {...this.getKeyCapProps(os, "control")} />
+				<KeyCap {...this.getKeyCapProps(os, "leftOption")} />
+				<KeyCap {...this.getKeyCapProps(os, "leftCommand")} />
 				<KeyCap {...this.getKeyCapProps(os, "spacebar")} />
-				<KeyCap {...this.getKeyCapProps(os, "rightAlt")} />
-				<KeyCap {...this.getKeyCapProps(os, "rightCtrl")} />
+				<KeyCap {...this.getKeyCapProps(os, "rightCommand")} />
+				<KeyCap {...this.getKeyCapProps(os, "rightOption")} />
 				<KeyCap {...this.getKeyCapProps(os, "ArrowLeft")} />
 				<div>
 					<HalfKeyCap {...this.getKeyCapProps(os, "ArrowUp")} />

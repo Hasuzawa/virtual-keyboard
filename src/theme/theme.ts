@@ -1,6 +1,6 @@
 import { OS, Color, BoxShadow } from "../type"
 
-type KeyboardTheme = Readonly<{
+type KeyboardTheme = {
 	keyCapColor: Color
 	keyCapBackgroundColor: Color
 	// keyboardColor: Color,
@@ -11,28 +11,36 @@ type KeyboardTheme = Readonly<{
 	keyCapBoxShadow?: BoxShadow
 
 	// buttonColor: Color
-}>
-
-const windows: KeyboardTheme = {
-	keyCapColor: "#dcdcdc",
-	keyCapBackgroundColor: "#303030",
-	keyboardBackgroundColor: "#303030",
-
-	keyCapBoxShadow: "0px 0px 5px 1px black",
 }
 
-const mac: KeyboardTheme = {
-	keyCapColor: "white",
-	keyCapBackgroundColor: "black",
-	keyboardBackgroundColor: "#c0c1c3",
+const themes: Record<OS, Readonly<KeyboardTheme>> = {
+	windows: {
+		keyCapColor: "#dcdcdc",
+		keyCapBackgroundColor: "#303030",
+		keyboardBackgroundColor: "#303030",
 
-	keyboardBoxShadow: "",
-}
+		keyCapBoxShadow: "0px 0px 5px 1px black",
+	},
+	mac: {
+		keyCapColor: "white",
+		keyCapBackgroundColor: "black",
+		keyboardBackgroundColor: "#c0c1c3",
 
-const linux: KeyboardTheme = {
-	keyCapColor: "black",
-	keyCapBackgroundColor: "transparent",
-	keyboardBackgroundColor: "transparent",
+		keyboardBoxShadow: "",
+	},
+	linux: {
+		keyCapColor: "black",
+		keyCapBackgroundColor: "transparent",
+		keyboardBackgroundColor: "transparent",
+	},
+	raspberry: {
+		keyCapColor: "#CD2355",
+		keyCapBackgroundColor: "white",
+		keyboardBackgroundColor: "white",
+
+		keyCapBoxShadow: "0px 0px 3px 1px black",
+		// keyboardBorderColor: "black"
+	},
 }
 
 const raspberry = {
@@ -45,6 +53,7 @@ const raspberry = {
 }
 
 export function selectedTheme(os: OS) {
+	const { windows, mac, linux, raspberry } = themes
 	switch (os) {
 		case "windows":
 			return windows

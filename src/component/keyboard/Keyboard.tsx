@@ -41,7 +41,6 @@ export const arrowIconParams = {
 const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 	const { setDragging } = props
 	const os = useAppSelector(selectOS)
-	// const keyCapData = new KeyCapData()
 
 	const getKeys = () => {
 		switch (os) {
