@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 import { StyledComponent } from "../type"
-import KeyCap, { HalfKeyCap } from "./KeyCap"
+import KeyCap, { HalfKeyCap } from "./keyboard/KeyCap"
 import { BsWindows, BsCommand } from "react-icons/bs"
 import { SiRaspberrypi } from "react-icons/si"
 import {
@@ -9,7 +9,7 @@ import {
 	MdArrowDropDown,
 	MdArrowRight,
 } from "react-icons/md"
-import { KeyWidth, arrowIconParams } from "./Keyboard"
+import { KeyWidth, arrowIconParams } from "./keyboard/Keyboard"
 import Span from "./Span"
 
 interface WindowKeyboardProps extends StyledComponent {}
@@ -107,7 +107,7 @@ const RawWindowKeyboard = (props: WindowKeyboardProps) => {
 				width={KeyWidth.SHIFT}
 				placement="center-left"
 			/>
-			<KeyCap lowerCase="z" upperCase="Z" />
+			{/* <KeyCap lowerCase="z" upperCase="Z" />
 			<KeyCap lowerCase="x" upperCase="X" />
 			<KeyCap lowerCase="c" upperCase="C" />
 			<KeyCap lowerCase="v" upperCase="V" />
@@ -117,7 +117,7 @@ const RawWindowKeyboard = (props: WindowKeyboardProps) => {
 			<KeyCap lowerCase="," upperCase="<" />
 
 			<KeyCap lowerCase="." upperCase=">" />
-			<KeyCap lowerCase="/" upperCase="?" />
+			<KeyCap lowerCase="/" upperCase="?" /> */}
 			<KeyCap
 				lowerCase={
 					<Span paddingRight={padding} fontSize={smallerFont}>
@@ -128,7 +128,7 @@ const RawWindowKeyboard = (props: WindowKeyboardProps) => {
 				placement="center-right"
 			/>
 
-			<KeyCap
+			{/* <KeyCap
 				lowerCase={
 					<Span paddingLeft={padding} fontSize={smallerFont}>
 						Ctrl
@@ -142,20 +142,11 @@ const RawWindowKeyboard = (props: WindowKeyboardProps) => {
 				lowerCase={<Span fontSize={smallerFont}>Fn</Span>}
 				placement="center-center"
 			/>
-			<KeyCap lowerCase={<BsWindows size={20} />} />
-			<KeyCap
-				lowerCase={<Span fontSize={smallerFont}>Alt</Span>}
-				placement="center-center"
-			/>
+			<KeyCap lowerCase={<BsWindows size={20} />} /> */}
+			<KeyCap lowerCase={<Span fontSize={smallerFont}>Alt</Span>} />
 			<KeyCap lowerCase="" width={KeyWidth.SPACEBAR} />
-			<KeyCap
-				lowerCase={<Span fontSize={smallerFont}>Alt</Span>}
-				placement="center-center"
-			/>
-			<KeyCap
-				lowerCase={<Span fontSize={smallerFont}>Ctrl</Span>}
-				placement="center-center"
-			/>
+			<KeyCap lowerCase={<Span fontSize={smallerFont}>Alt</Span>} />
+			<KeyCap lowerCase={<Span fontSize={smallerFont}>Ctrl</Span>} />
 			<KeyCap lowerCase={<MdArrowLeft {...arrowIconParams} />} />
 			<div>
 				<HalfKeyCap

@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 import { StyledComponent } from "../type"
-import KeyCap, { HalfKeyCap } from "./KeyCap"
+import KeyCap, { HalfKeyCap } from "./keyboard/KeyCap"
 import { BsWindows, BsCommand, BsOption } from "react-icons/bs"
 import { SiRaspberrypi } from "react-icons/si"
 import { AiOutlineGlobal } from "react-icons/ai"
@@ -11,7 +11,7 @@ import {
 	MdArrowDropDown,
 	MdArrowRight,
 } from "react-icons/md"
-import { KeyWidth, arrowIconParams } from "./Keyboard"
+import { KeyWidth, arrowIconParams } from "./keyboard/Keyboard"
 import Span from "./Span"
 
 const padding = 8

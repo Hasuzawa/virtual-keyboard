@@ -1,12 +1,12 @@
 import styled, { css } from "styled-components"
-import { StyledComponent } from "../type"
+import { StyledComponent } from "../../type"
 import { motion } from "framer-motion"
-import { useAppDispatch, useAppSelector } from "../store/useStore"
+import { useAppDispatch, useAppSelector } from "../../store/useStore"
 import {
 	handleKeyDown,
 	handleKeyUp,
 	selectDisplayUpperCase,
-} from "../store/keyboardSlice"
+} from "../../store/keyboardSlice"
 
 type VerticalPlacement = "top" | "center" | "bottom"
 type HorizontalPlacement = "left" | "center" | "right"

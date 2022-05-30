@@ -1,11 +1,11 @@
 import styled, { ThemeProvider, css, keyframes } from "styled-components"
-import { StyledComponent } from "../type"
+import { StyledComponent } from "../../type"
 import { motion } from "framer-motion"
 import { forwardRef } from "react"
 import KeyCap, { HalfKeyCap } from "./KeyCap"
-import { selectedTheme } from "../theme/theme"
-import { useAppDispatch, useAppSelector } from "../store/useStore"
-import { selectOS } from "../store/keyboardSlice"
+import { selectedTheme } from "../../theme/theme"
+import { useAppDispatch, useAppSelector } from "../../store/useStore"
+import { selectOS } from "../../store/keyboardSlice"
 import { BsWindows, BsCommand } from "react-icons/bs"
 import { SiRaspberrypi } from "react-icons/si"
 import { useState } from "react"
@@ -15,10 +15,10 @@ import {
 	MdArrowDropDown,
 	MdArrowRight,
 } from "react-icons/md"
-import WindowKeyboard from "./WindowKeyboard"
-import RaspberryPiKeyCaps from "./RaspberryPiKeyCaps"
-import MacKeyCaps from "./MacKeyCaps"
-import KeyCapData from "../KeyCapData"
+import WindowKeyboard from "../WindowKeyboard"
+import RaspberryPiKeyCaps from "../RaspberryPiKeyCaps"
+import MacKeyCaps from "../MacKeyCaps"
+import KeyboardData from "./KeyboardData"
 
 interface KeyboardProps extends StyledComponent {
 	dragging: boolean
@@ -95,20 +95,7 @@ const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 			className={props.className}
 		>
 			{/* {getKeys()} */}
-			{"`1234567890-=".split("").map((s: string) => (
-				<KeyCap {...KeyCapData.getKeyCapProps("windows", s as any)} />
-			))}
-
-			<KeyCap {...KeyCapData.getKeyCapProps("windows", "backspace")} />
-			<KeyCap {...KeyCapData.getKeyCapProps("windows", "tab")} />
-			{"qwertyuiop[]\\".split("").map((s: string) => (
-				<KeyCap {...KeyCapData.getKeyCapProps("windows", s as any)} />
-			))}
-			<KeyCap {...KeyCapData.getKeyCapProps("windows", "capsLock")} />
-			{"asdfghjkl;'".split("").map((s: string) => (
-				<KeyCap {...KeyCapData.getKeyCapProps("windows", s as any)} />
-			))}
-			<KeyCap {...KeyCapData.getKeyCapProps("windows", "enter")} />
+			{KeyboardData.getKeyboardLayout(os)}
 		</motion.div>
 	)
 })

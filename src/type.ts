@@ -58,7 +58,7 @@ export type SpecialCharacters =
 	| "."
 	| "/"
 
-type NonPrintable = " " | "\t"
+type NonPrintable = "\t"
 export type FunctionalKey =
 	| "tab"
 	| "backspace"
@@ -67,5 +67,15 @@ export type FunctionalKey =
 	| "enter"
 	| "control"
 	| "alt"
-type ArrowKey = "ArrowLeft" | "ArrowUp" | "ArrowDown" | "ArrowRight"
+	| "leftShift"
+	| "rightShift"
+	| "leftCtrl"
+	| "rightCtrl"
+	| "fn"
+	| "windowsKey"
+	| "leftAlt"
+	| "rightAlt"
+	| "spacebar"
+	| "return"
+export type ArrowKey = "ArrowLeft" | "ArrowUp" | "ArrowDown" | "ArrowRight"
 // don't forget Dead, Meta keys!
