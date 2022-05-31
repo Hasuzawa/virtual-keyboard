@@ -2,22 +2,10 @@ import styled, { ThemeProvider, css, keyframes } from "styled-components"
 import { StyledComponent } from "../../type"
 import { motion } from "framer-motion"
 import { forwardRef } from "react"
-import KeyCap, { HalfKeyCap } from "./KeyCap"
 import { selectedTheme } from "../../theme/theme"
 import { useAppDispatch, useAppSelector } from "../../store/useStore"
 import { selectOS } from "../../store/keyboardSlice"
-import { BsWindows, BsCommand } from "react-icons/bs"
-import { SiRaspberrypi } from "react-icons/si"
-import { useState } from "react"
-import {
-	MdArrowLeft,
-	MdArrowDropUp,
-	MdArrowDropDown,
-	MdArrowRight,
-} from "react-icons/md"
-import WindowKeyboard from "../WindowKeyboard"
-import RaspberryPiKeyCaps from "../RaspberryPiKeyCaps"
-import MacKeyCaps from "../MacKeyCaps"
+
 import KeyboardData from "./KeyboardData"
 
 interface KeyboardProps extends StyledComponent {
@@ -25,63 +13,10 @@ interface KeyboardProps extends StyledComponent {
 	setDragging: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export enum KeyWidth {
-	STANDARD = 64,
-	TAB_DEL = 98,
-	CAP_RETURN = 117,
-	SHIFT = 153,
-	SPACEBAR = 352,
-	COMMAND = 81,
-}
-
-export const arrowIconParams = {
-	size: 30,
-}
-
 const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 	const { setDragging } = props
 	const os = useAppSelector(selectOS)
 
-	const getKeys = () => {
-		switch (os) {
-			case "windows":
-				return <WindowKeyboard />
-			case "mac":
-				return <MacKeyCaps />
-			case "linux":
-				return (
-					<>
-						<KeyCap lowerCase="Ctrl" width={KeyWidth.TAB_DEL} />
-						<KeyCap lowerCase="Fn" />
-						<KeyCap lowerCase={<BsWindows size={20} />} />
-						<KeyCap lowerCase="Alt" />
-						<KeyCap lowerCase="" width={KeyWidth.SPACEBAR} />
-						<KeyCap lowerCase="Alt" />
-						<KeyCap lowerCase="Ctrl" />
-						<KeyCap
-							lowerCase={<MdArrowLeft {...arrowIconParams} />}
-						/>
-						<div>
-							<HalfKeyCap
-								lowerCase={
-									<MdArrowDropUp {...arrowIconParams} />
-								}
-							/>
-							<HalfKeyCap
-								lowerCase={
-									<MdArrowDropDown {...arrowIconParams} />
-								}
-							/>
-						</div>
-						<KeyCap
-							lowerCase={<MdArrowRight {...arrowIconParams} />}
-						/>
-					</>
-				)
-			case "raspberry":
-				return <RaspberryPiKeyCaps />
-		}
-	}
 	// note: for transition animation to appear, the same component must be used, so switching or rendering different
 	// won't have animation
 

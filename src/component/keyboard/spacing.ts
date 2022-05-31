@@ -8,16 +8,20 @@ export const KeyWidth = {
 }
 
 export const padding = {
-	windows: 15,
+	default: 15,
 	mac: 8,
+	raspberry: 15,
 }
 
 export const smallerFont = {
-	windows: 14,
+	default: 14,
 	mac: 14,
+	raspberry: 14,
 }
 
 export const iconSize = {
 	arrow: 30,
+	window: 20,
 	mac: 20,
+	raspberry: 30,
 }

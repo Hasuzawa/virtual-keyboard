@@ -6,7 +6,12 @@ import {
 } from "react-icons/md"
 import { LowerCaseKey, KeyCapProps } from "../../type"
 import { iconSize } from "./spacing"
+import Span from "../Span"
+import { KeyWidth, padding, smallerFont } from "./spacing"
 
+/**
+ * The fallback keys for all OS.
+ */
 const defaultKeys: Partial<Readonly<Record<LowerCaseKey, KeyCapProps>>> = {
 	"`": {
 		lowerCase: "`",
@@ -207,6 +212,86 @@ const defaultKeys: Partial<Readonly<Record<LowerCaseKey, KeyCapProps>>> = {
 	},
 	ArrowRight: {
 		lowerCase: <MdArrowRight size={iconSize.arrow} />,
+	},
+
+	backspace: {
+		lowerCase: (
+			<Span paddingRight={padding.default} fontSize={smallerFont.default}>
+				Backspace
+			</Span>
+		),
+		width: KeyWidth.TAB_DEL,
+		placement: "center-right",
+	},
+	tab: {
+		lowerCase: (
+			<Span paddingLeft={padding.default} fontSize={smallerFont.default}>
+				Tab
+			</Span>
+		),
+		width: KeyWidth.TAB_DEL,
+		placement: "center-left",
+	},
+	capsLock: {
+		lowerCase: (
+			<Span paddingLeft={padding.default} fontSize={smallerFont.default}>
+				Caps
+			</Span>
+		),
+		width: KeyWidth.CAP_RETURN,
+		placement: "center-left",
+	},
+	enter: {
+		lowerCase: (
+			<Span paddingRight={padding.default} fontSize={smallerFont.default}>
+				Enter
+			</Span>
+		),
+		width: KeyWidth.CAP_RETURN,
+		placement: "center-right",
+	},
+	leftShift: {
+		lowerCase: (
+			<Span paddingLeft={padding.default} fontSize={smallerFont.default}>
+				Shift
+			</Span>
+		),
+		width: KeyWidth.SHIFT,
+		placement: "center-left",
+	},
+	rightShift: {
+		lowerCase: (
+			<Span paddingRight={padding.default} fontSize={smallerFont.default}>
+				Shift
+			</Span>
+		),
+		width: KeyWidth.SHIFT,
+		placement: "center-right",
+	},
+	leftCtrl: {
+		lowerCase: (
+			<Span paddingLeft={padding.default} fontSize={smallerFont.default}>
+				Ctrl
+			</Span>
+		),
+		width: KeyWidth.TAB_DEL,
+		placement: "center-left",
+	},
+	fn: {
+		lowerCase: <Span fontSize={smallerFont.default}>Fn</Span>,
+	},
+	leftAlt: {
+		lowerCase: <Span fontSize={smallerFont.default}>Alt</Span>,
+	},
+	spacebar: {
+		lowerCase: "",
+		width: KeyWidth.SPACEBAR,
+	},
+	rightAlt: {
+		lowerCase: <Span fontSize={smallerFont.default}>Alt</Span>,
+	},
+	rightCtrl: {
+		lowerCase: <Span fontSize={smallerFont.default}>Ctrl</Span>,
 	},
 }
 
