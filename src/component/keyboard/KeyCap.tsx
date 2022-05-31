@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { StyledComponent } from "../../type"
+import { StyledComponent, KeyCapProps } from "../../type"
 import { motion } from "framer-motion"
 import { useAppDispatch, useAppSelector } from "../../store/useStore"
 import {
@@ -7,22 +7,6 @@ import {
 	handleKeyUp,
 	selectDisplayUpperCase,
 } from "../../store/keyboardSlice"
-
-type VerticalPlacement = "top" | "center" | "bottom"
-type HorizontalPlacement = "left" | "center" | "right"
-
-export type Placement =
-	| `${VerticalPlacement}-${HorizontalPlacement}`
-	| "vertical-split"
-
-interface KeyCapProps extends StyledComponent {
-	lowerCase: string | React.ReactNode
-	upperCase?: string | React.ReactNode
-	width?: number
-	// onClick: Function
-	// onEnter: Function
-	placement?: Placement
-}
 
 const RawKeyCap = (props: KeyCapProps) => {
 	const { lowerCase, upperCase, className } = props

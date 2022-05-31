@@ -83,3 +83,25 @@ export type FunctionalKey =
 	| "rightCommand"
 export type ArrowKey = "ArrowLeft" | "ArrowUp" | "ArrowDown" | "ArrowRight"
 // don't forget Dead, Meta keys!
+export type LowerCaseKey =
+	| LowerCaseAlphabet
+	| Digit
+	| SpecialCharacters
+	| FunctionalKey
+	| ArrowKey
+
+type VerticalPlacement = "top" | "center" | "bottom"
+type HorizontalPlacement = "left" | "center" | "right"
+
+type Placement =
+	| `${VerticalPlacement}-${HorizontalPlacement}`
+	| "vertical-split"
+
+export interface KeyCapProps extends StyledComponent {
+	lowerCase: string | React.ReactNode
+	upperCase?: string | React.ReactNode
+	width?: number
+	// onClick: Function
+	// onEnter: Function
+	placement?: Placement
+}

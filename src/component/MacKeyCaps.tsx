@@ -55,7 +55,6 @@ const RawMacKeyCaps = (props: MacKeyCapsProps) => {
 			/>
 			<KeyCap lowerCase="q" upperCase="Q" />
 
-
 			<KeyCap
 				lowerCase={
 					<Span
