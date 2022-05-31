@@ -1,8 +1,5 @@
-import MacKeyboard from "./component/legacy/MacKeyboard"
 import styled from "styled-components"
 import DragZone from "./component/DragZone"
-import Display from "./component/Display"
-import KeyCap from "./component/keyboard/KeyCap"
 import { useAppDispatch, useAppSelector } from "./store/useStore"
 import { handleKeyDown, handleKeyUp } from "./store/keyboardSlice"
 import { KeyboardEvent } from "react"
@@ -35,13 +32,7 @@ const rawApp = (props: AppProps) => {
 					dispatch(handleKeyUp(e.key as any))
 				}
 			>
-				{/* <div>
-                <textarea />
-            </div>
-            <MacKeyboard /> */}
-				{/* <Display /> */}
 				<DragZone />
-				{/* <MacKeyboard /> */}
 			</main>
 		</ThemeProvider>
 	)

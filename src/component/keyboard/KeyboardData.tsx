@@ -107,6 +107,44 @@ class KeyboardData {
 			</>
 		)
 	}
+	private static getLinuxLayout(): React.ReactNode {
+		const os = "linux"
+		return (
+			<>
+				{"`1234567890-=".split("").map((s: string) => (
+					<KeyCap {...this.getKeyCapProps(os, s as any)} />
+				))}
+				<KeyCap {...this.getKeyCapProps(os, "backspace")} />
+				<KeyCap {...this.getKeyCapProps(os, "tab")} />
+				{"qwertyuiop[]\\".split("").map((s: string) => (
+					<KeyCap {...this.getKeyCapProps(os, s as any)} />
+				))}
+				<KeyCap {...this.getKeyCapProps(os, "capsLock")} />
+				{"asdfghjkl;'".split("").map((s: string) => (
+					<KeyCap {...this.getKeyCapProps(os, s as any)} />
+				))}
+				<KeyCap {...this.getKeyCapProps(os, "enter")} />
+				<KeyCap {...this.getKeyCapProps(os, "leftShift")} />
+				{"zxcvbnm,./".split("").map((s: string) => (
+					<KeyCap {...this.getKeyCapProps(os, s as any)} />
+				))}
+				<KeyCap {...this.getKeyCapProps(os, "rightShift")} />
+				<KeyCap {...this.getKeyCapProps(os, "leftCtrl")} />
+				<KeyCap {...this.getKeyCapProps(os, "fn")} />
+				<KeyCap {...this.getKeyCapProps(os, "logoKey")} />
+				<KeyCap {...this.getKeyCapProps(os, "leftAlt")} />
+				<KeyCap {...this.getKeyCapProps(os, "spacebar")} />
+				<KeyCap {...this.getKeyCapProps(os, "rightAlt")} />
+				<KeyCap {...this.getKeyCapProps(os, "rightCtrl")} />
+				<KeyCap {...this.getKeyCapProps(os, "ArrowLeft")} />
+				<div>
+					<HalfKeyCap {...this.getKeyCapProps(os, "ArrowUp")} />
+					<HalfKeyCap {...this.getKeyCapProps(os, "ArrowDown")} />
+				</div>
+				<KeyCap {...this.getKeyCapProps(os, "ArrowRight")} />
+			</>
+		)
+	}
 
 	private static getRaspberryLayout(): React.ReactNode {
 		const os = "raspberry"
@@ -159,7 +197,7 @@ class KeyboardData {
 			case "mac":
 				return this.getMacLayout()
 			case "linux":
-				return
+				return this.getLinuxLayout()
 			case "raspberry":
 				return this.getRaspberryLayout()
 			default:
