@@ -7,6 +7,9 @@ import { useAppDispatch, useAppSelector } from "../../store/useStore"
 import { selectOS } from "../../store/keyboardSlice"
 
 import KeyboardData from "./KeyboardData"
+// import DefaultKeyboard from "./DefaultKeyboard"
+import { defaultKeyboard } from "./DefaultKeyboard"
+import { macKeyboard } from "./MacKeyboard"
 
 interface KeyboardProps extends StyledComponent {
 	dragging: boolean
@@ -29,7 +32,11 @@ const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 			className={props.className}
 		>
 			{/* {getKeys()} */}
-			{KeyboardData.getKeyboardLayout(os)}
+			{/* {KeyboardData.getKeyboardLayout(os)} */}
+			{/* {defaultKeyboard} */}
+			{macKeyboard}
+			{/* {DefaultKeyboard} */}
+			{/* {MacKeyboard} */}
 		</motion.div>
 	)
 })

@@ -29,7 +29,7 @@ While this is quite a trivial state machine, knowing that there are around 50 ke
 ### Keyboard
 
 <details open>
-For the keyboards, there are many ways to implement it. You can hard-code all the different layout for every single one but that is not scalable. And about half of the keys will be alphabets so it is not following the DRY principle either. We can also make a class 
+For the keyboards, there are many ways to implement it. You can hard-code all the different layout for every single one but that is not scalable. And about two third of the keys will be the same so it is not following the DRY principle either. We can also make a class and use OOP. But after some consideration, all I need is some fallback, strictly speaking I do not need any method. My attention was thus brought to a lesser known feature in Javascript: Prototype.
 
 </details>
 
