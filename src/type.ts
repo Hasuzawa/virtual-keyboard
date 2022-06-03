@@ -62,27 +62,32 @@ type NonPrintable = "\t"
 export type FunctionalKey =
 	| "tab"
 	| "backspace"
-	// | "delete"
 	| "capsLock"
 	| "enter"
-	| "control"
+	// | "control"
 	| "alt"
 	| "leftShift"
 	| "rightShift"
 	| "leftCtrl"
-	| "rightCtrl"
+	| "ctrl"
 	| "fn"
-	| "logoKey"
-	| "leftAlt"
-	| "rightAlt"
+	// | "logoKey"
+	// | "leftAlt"
+	// | "rightAlt"
 	| "spacebar"
-// | "return"
-// | "leftOption"
-// | "leftCommand"
-// | "rightOption"
-// | "rightCommand"
-export type MacKey = "delete" | "return" | "option" | "command"
-export type ArrowKey = "ArrowLeft" | "ArrowUp" | "ArrowDown" | "ArrowRight"
+
+export type WindowsKey = "logoKey"
+export type MacKey =
+	| "delete"
+	| "return"
+	| "leftOption"
+	| "leftCommand"
+	| "rightCommand"
+	| "rightOption"
+export type RaspberryKey = "logoKey"
+
+export type ArrowKey = "arrowLeft" | "arrowUp" | "arrowDown" | "arrowRight"
+export type BlankKey = "blank"
 // don't forget Dead, Meta keys!
 export type LowerCaseKey =
 	| LowerCaseAlphabet
@@ -90,6 +95,7 @@ export type LowerCaseKey =
 	| SpecialCharacters
 	| FunctionalKey
 	| ArrowKey
+	| BlankKey
 
 type VerticalPlacement = "top" | "center" | "bottom"
 type HorizontalPlacement = "left" | "center" | "right"
@@ -106,3 +112,18 @@ export interface KeyCapProps extends StyledComponent {
 	// onEnter: Function
 	placement?: Placement
 }
+
+export type DefaultKeys = {
+	[key in LowerCaseKey]: React.ReactNode
+}
+export type WindowsKeys = {
+	[key in LowerCaseKey | WindowsKey]: React.ReactNode
+}
+export type MacKeys = {
+	[key in LowerCaseKey | MacKey]: React.ReactNode
+}
+export type RaspberryKeys = {
+	[key in LowerCaseKey | RaspberryKey]: React.ReactNode
+}
+
+export type Keyboards = Record<LayoutOS, React.ReactNode>

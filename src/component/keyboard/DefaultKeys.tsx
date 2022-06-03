@@ -4,14 +4,13 @@ import {
 	MdArrowDropDown,
 	MdArrowRight,
 } from "react-icons/md"
-import { LowerCaseKey, KeyCapProps } from "../../type"
+import { DefaultKeys } from "../../type"
 import { iconSize } from "./spacing"
 import Span from "../Span"
-// import { KeyWidth, padding, smallerFont } from "./spacing"
 import KeyCap, { HalfKeyCap } from "./KeyCap"
 import { padding, smallerFont, KeyWidth as keyWidth } from "./spacing"
 
-const defaultKeys = {
+const defaultKeys: DefaultKeys = {
 	/* first row */
 	"`": <KeyCap lowerCase="`" upperCase="~" />,
 	"1": <KeyCap lowerCase="1" upperCase="!" />,
@@ -199,96 +198,5 @@ MacKeys.backspace = (
 		placement="bottom-right"
 	/>
 )
-
-// const defaultKeyboard = (
-// 	<>
-// 		{defaultKeys["`"]}
-// 		{defaultKeys["1"]}
-// 		{defaultKeys["2"]}
-// 		{defaultKeys["3"]}
-// 		{defaultKeys["4"]}
-// 		{defaultKeys["5"]}
-// 		{defaultKeys["6"]}
-// 		{defaultKeys["7"]}
-// 		{defaultKeys["8"]}
-// 		{defaultKeys["9"]}
-// 		{defaultKeys["0"]}
-// 		{defaultKeys["-"]}
-// 		{defaultKeys["="]}
-// 		{defaultKeys["backspace"]}
-
-// 		{defaultKeys["tab"]}
-// 		{defaultKeys["q"]}
-// 		{defaultKeys["w"]}
-// 		{defaultKeys["e"]}
-// 		{defaultKeys["r"]}
-// 		{defaultKeys["t"]}
-// 		{defaultKeys["y"]}
-// 		{defaultKeys["u"]}
-// 		{defaultKeys["i"]}
-// 		{defaultKeys["o"]}
-// 		{defaultKeys["p"]}
-// 		{defaultKeys["["]}
-// 		{defaultKeys["]"]}
-// 		{defaultKeys["\\"]}
-
-// 		{defaultKeys["capsLock"]}
-// 		{defaultKeys["a"]}
-// 		{defaultKeys["s"]}
-// 		{defaultKeys["d"]}
-// 		{defaultKeys["f"]}
-// 		{defaultKeys["g"]}
-// 		{defaultKeys["h"]}
-// 		{defaultKeys["j"]}
-// 		{defaultKeys["k"]}
-// 		{defaultKeys["l"]}
-// 		{defaultKeys[";"]}
-// 		{defaultKeys["'"]}
-// 		{defaultKeys["enter"]}
-
-// 		{defaultKeys["leftShift"]}
-// 		{defaultKeys["z"]}
-// 		{defaultKeys["x"]}
-// 		{defaultKeys["c"]}
-// 		{defaultKeys["v"]}
-// 		{defaultKeys["b"]}
-// 		{defaultKeys["n"]}
-// 		{defaultKeys["m"]}
-// 		{defaultKeys[","]}
-// 		{defaultKeys["."]}
-// 		{defaultKeys["/"]}
-// 		{defaultKeys["rightShift"]}
-
-// 		{defaultKeys["leftCtrl"]}
-// 		{defaultKeys["fn"]}
-// 		{defaultKeys["blank"]}
-// 		{/* {defaultKeys[""]} */}
-// 		{defaultKeys["alt"]}
-// 		{defaultKeys["spacebar"]}
-// 		{defaultKeys["alt"]}
-// 		{defaultKeys["ctrl"]}
-// 		{defaultKeys["arrowLeft"]}
-// 		<div>
-// 		{defaultKeys["arrowUp"]}
-// 		{defaultKeys["arrowDown"]}
-// 		</div>
-// 		{defaultKeys["arrowRight"]}
-
-// 		{/* {MacKeys["`"]}
-// 		{MacKeys["1"]}
-// 		{MacKeys["2"]}
-// 		{MacKeys["3"]}
-// 		{MacKeys["4"]}
-// 		{MacKeys["5"]}
-// 		{MacKeys["6"]}
-// 		{MacKeys["7"]}
-// 		{MacKeys["8"]}
-// 		{MacKeys["9"]}
-// 		{MacKeys["0"]}
-// 		{MacKeys["-"]}
-// 		{MacKeys["="]}
-// 		{MacKeys["backspace"]} */}
-// 	</>
-// )
 
 export { defaultKeys }

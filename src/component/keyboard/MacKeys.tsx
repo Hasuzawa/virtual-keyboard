@@ -1,114 +1,13 @@
-// import KeyCapProps from "./component/KeyCap"
 import Span from "../Span"
-import { KeyCapProps } from "../../type"
-import { LowerCaseKey } from "../../type"
+import { MacKeys } from "../../type"
 import { BsCommand, BsOption } from "react-icons/bs"
 import { AiOutlineGlobal } from "react-icons/ai"
-import {
-	KeyWidth,
-	padding,
-	smallerFont,
-	iconSize,
-	KeyWidth as keyWidth,
-} from "./spacing"
+import { MdArrowLeft, MdArrowRight } from "react-icons/md"
+import { padding, smallerFont, iconSize, KeyWidth as keyWidth } from "./spacing"
 import { defaultKeys } from "./DefaultKeys"
-import KeyCap from "./KeyCap"
+import KeyCap, { HalfKeyCap } from "./KeyCap"
 
-// const macKeys: Partial<Readonly<Record<LowerCaseKey, KeyCapProps>>> = {
-
-// 	leftOption: {
-// 		lowerCase: (
-// 			<>
-// 				<Span
-// 					alignSelf="flex-end"
-// 					paddingTop={padding.mac}
-// 					paddingRight={padding.mac}
-// 				>
-// 					<BsOption size={iconSize.mac} />
-// 				</Span>
-// 				<Span
-// 					alignSelf="center"
-// 					paddingBottom={padding.mac}
-// 					fontSize={smallerFont.mac}
-// 				>
-// 					option
-// 				</Span>
-// 			</>
-// 		),
-// 		placement: "vertical-split",
-// 	},
-// 	leftCommand: {
-// 		lowerCase: (
-// 			<>
-// 				<Span
-// 					alignSelf="flex-end"
-// 					paddingTop={padding.mac}
-// 					paddingRight={padding.mac}
-// 				>
-// 					<BsCommand size={iconSize.mac} />
-// 				</Span>
-// 				<Span
-// 					paddingBottom={padding.mac}
-// 					fontSize={smallerFont.mac}
-// 					alignSelf="center"
-// 				>
-// 					command
-// 				</Span>
-// 			</>
-// 		),
-// 		width: KeyWidth.COMMAND,
-// 		placement: "vertical-split",
-// 	},
-// 	spacebar: {
-// 		lowerCase: "",
-// 		width: KeyWidth.SPACEBAR,
-// 	},
-// 	rightOption: {
-// 		lowerCase: (
-// 			<>
-// 				<Span
-// 					alignSelf="flex-start"
-// 					paddingLeft={padding.mac}
-// 					paddingTop={padding.mac}
-// 				>
-// 					<BsOption size={iconSize.mac} />
-// 				</Span>
-// 				<Span
-// 					alignSelf="center"
-// 					paddingBottom={padding.mac}
-// 					fontSize={smallerFont.mac}
-// 				>
-// 					option
-// 				</Span>
-// 			</>
-// 		),
-// 		placement: "vertical-split",
-// 	},
-// 	rightCommand: {
-// 		lowerCase: (
-// 			<>
-// 				<Span
-// 					alignSelf="flex-start"
-// 					paddingTop={padding.mac}
-// 					paddingLeft={padding.mac}
-// 				>
-// 					<BsCommand size={iconSize.mac} />
-// 				</Span>
-// 				<Span
-// 					paddingBottom={padding.mac}
-// 					fontSize={smallerFont.mac}
-// 					alignSelf="center"
-// 				>
-// 					command
-// 				</Span>
-// 			</>
-// 		),
-// 		width: KeyWidth.COMMAND,
-// 		placement: "vertical-split",
-// 	},
-// }
-
-const macKeys = Object.create(defaultKeys)
+const macKeys: MacKeys = Object.create(defaultKeys)
 macKeys.delete = (
 	<KeyCap
 		lowerCase={
@@ -247,9 +146,105 @@ macKeys.ctrl = (
 		placement="vertical-split"
 	/>
 )
-
-// macKey.return = <KeyCap
-
-// />
+macKeys.leftOption = (
+	<KeyCap
+		lowerCase={
+			<>
+				<Span
+					alignSelf="flex-end"
+					paddingTop={padding.mac}
+					paddingRight={padding.mac}
+				>
+					<BsOption size={iconSize.mac} />
+				</Span>
+				<Span
+					alignSelf="center"
+					paddingBottom={padding.mac}
+					fontSize={smallerFont.mac}
+				>
+					option
+				</Span>
+			</>
+		}
+		placement="vertical-split"
+	/>
+)
+macKeys.leftCommand = (
+	<KeyCap
+		lowerCase={
+			<>
+				<Span
+					alignSelf="flex-end"
+					paddingTop={padding.mac}
+					paddingRight={padding.mac}
+				>
+					<BsCommand size={iconSize.mac} />
+				</Span>
+				<Span
+					paddingBottom={padding.mac}
+					fontSize={smallerFont.mac}
+					alignSelf="center"
+				>
+					command
+				</Span>
+			</>
+		}
+		width={keyWidth.COMMAND}
+		placement="vertical-split"
+	/>
+)
+macKeys.rightCommand = (
+	<KeyCap
+		lowerCase={
+			<>
+				<Span
+					alignSelf="flex-start"
+					paddingTop={padding.mac}
+					paddingLeft={padding.mac}
+				>
+					<BsCommand size={iconSize.mac} />
+				</Span>
+				<Span
+					paddingBottom={padding.mac}
+					fontSize={smallerFont.mac}
+					alignSelf="center"
+				>
+					command
+				</Span>
+			</>
+		}
+		width={keyWidth.COMMAND}
+		placement="vertical-split"
+	/>
+)
+macKeys.rightOption = (
+	<KeyCap
+		lowerCase={
+			<>
+				<Span
+					alignSelf="flex-start"
+					paddingLeft={padding.mac}
+					paddingTop={padding.mac}
+				>
+					<BsOption size={iconSize.mac} />
+				</Span>
+				<Span
+					alignSelf="center"
+					paddingBottom={padding.mac}
+					fontSize={smallerFont.mac}
+				>
+					option
+				</Span>
+			</>
+		}
+		placement="vertical-split"
+	/>
+)
+macKeys.arrowLeft = (
+	<HalfKeyCap lowerCase={<MdArrowLeft size={iconSize.arrow} />} />
+)
+macKeys.arrowRight = (
+	<HalfKeyCap lowerCase={<MdArrowRight size={iconSize.arrow} />} />
+)
 
 export { macKeys }
