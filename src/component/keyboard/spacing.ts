@@ -23,5 +23,6 @@ export const iconSize = {
 	arrow: 30,
 	window: 20,
 	mac: 20,
+	linux: 30,
 	raspberry: 30,
 }

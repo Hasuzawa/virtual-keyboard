@@ -85,6 +85,7 @@ export type MacKey =
 	| "rightCommand"
 	| "rightOption"
 export type RaspberryKey = "logoKey"
+export type LinuxKey = "logoKey"
 
 export type ArrowKey = "arrowLeft" | "arrowUp" | "arrowDown" | "arrowRight"
 export type BlankKey = "blank"
@@ -122,8 +123,12 @@ export type WindowsKeys = {
 export type MacKeys = {
 	[key in LowerCaseKey | MacKey]: React.ReactNode
 }
+export type LinuxKeys = {
+	[key in LowerCaseKey | LinuxKey]: React.ReactNode
+}
+
 export type RaspberryKeys = {
 	[key in LowerCaseKey | RaspberryKey]: React.ReactNode
 }
 
-export type Keyboards = Record<LayoutOS, React.ReactNode>
+export type Keyboards = Readonly<Record<LayoutOS, React.ReactNode>>

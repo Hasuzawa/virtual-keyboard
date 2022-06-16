@@ -5,11 +5,6 @@ import { forwardRef } from "react"
 import { selectedTheme } from "../../theme/theme"
 import { useAppDispatch, useAppSelector } from "../../store/useStore"
 import { selectOS } from "../../store/keyboardSlice"
-
-import KeyboardData from "./KeyboardData"
-// import DefaultKeyboard from "./DefaultKeyboard"
-import { defaultKeyboard } from "./DefaultKeyboard"
-import { macKeyboard } from "./MacKeyboard"
 import keyboards from "./Keyboards"
 
 interface KeyboardProps extends StyledComponent {
@@ -32,13 +27,7 @@ const RawKeyboard = forwardRef<HTMLDivElement, KeyboardProps>((props, ref) => {
 			onDragEnd={() => setDragging(false)}
 			className={props.className}
 		>
-			{/* {getKeys()} */}
-			{/* {KeyboardData.getKeyboardLayout(os)} */}
-			{/* {defaultKeyboard} */}
-			{/* {macKeyboard} */}
 			{keyboards[os]!}
-			{/* {DefaultKeyboard} */}
-			{/* {MacKeyboard} */}
 		</motion.div>
 	)
 })
