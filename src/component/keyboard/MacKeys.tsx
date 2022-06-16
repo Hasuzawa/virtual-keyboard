@@ -3,7 +3,7 @@ import { MacKeys } from "../../type"
 import { BsCommand, BsOption } from "react-icons/bs"
 import { AiOutlineGlobal } from "react-icons/ai"
 import { MdArrowLeft, MdArrowRight } from "react-icons/md"
-import { padding, smallerFont, iconSize, KeyWidth as keyWidth } from "./spacing"
+import { padding, smallerFont, iconSize, keyWidth } from "./spacing"
 import { defaultKeys } from "./DefaultKeys"
 import KeyCap, { HalfKeyCap } from "./KeyCap"
 

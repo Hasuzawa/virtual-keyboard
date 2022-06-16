@@ -1,7 +1,6 @@
 import { WindowsKeys } from "../../type"
 import { BsWindows } from "react-icons/bs"
-
-import { iconSize, KeyWidth as keyWidth } from "./spacing"
+import { iconSize } from "./spacing"
 import { defaultKeys } from "./DefaultKeys"
 import KeyCap from "./KeyCap"
 

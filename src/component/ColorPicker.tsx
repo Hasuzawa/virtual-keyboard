@@ -1,9 +1,9 @@
 import styled from "styled-components"
-import { StyledComponent } from "../type"
+import { StyledComponent, Color } from "../type"
 
 interface ColorPickProps extends StyledComponent {
-	defaultColor: string
-	setColor: React.Dispatch<React.SetStateAction<string>>
+	defaultColor: Color
+	setColor: React.Dispatch<React.SetStateAction<Color>>
 }
 
 const RawColorPick = (props: ColorPickProps) => {

@@ -1,4 +1,4 @@
-import styled, { ThemeProvider, css, keyframes } from "styled-components"
+import styled, { css } from "styled-components"
 import { StyledComponent } from "../../type"
 import { motion } from "framer-motion"
 import { forwardRef } from "react"

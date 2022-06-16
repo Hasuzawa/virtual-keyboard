@@ -8,7 +8,7 @@ import { DefaultKeys } from "../../type"
 import { iconSize } from "./spacing"
 import Span from "../Span"
 import KeyCap, { HalfKeyCap } from "./KeyCap"
-import { padding, smallerFont, KeyWidth as keyWidth } from "./spacing"
+import { padding, smallerFont, keyWidth } from "./spacing"
 
 const defaultKeys: DefaultKeys = {
 	/* first row */

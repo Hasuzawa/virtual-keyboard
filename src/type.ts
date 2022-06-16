@@ -6,9 +6,8 @@ export interface StyledComponent {
 export type OS = "windows" | "mac" | "linux" | "raspberry"
 export type LayoutOS = OS | "default"
 
+// proper typing Color is unfruitful for this project
 export type Color = string
-// unless we want to spend a lot of effort just to make a type that is neither indicative nor helpful,
-// this is probably better
 
 export type BoxShadow = string
 
@@ -117,18 +116,21 @@ export interface KeyCapProps extends StyledComponent {
 export type DefaultKeys = {
 	[key in LowerCaseKey]: React.ReactNode
 }
-export type WindowsKeys = {
-	[key in LowerCaseKey | WindowsKey]: React.ReactNode
-}
-export type MacKeys = {
-	[key in LowerCaseKey | MacKey]: React.ReactNode
-}
-export type LinuxKeys = {
-	[key in LowerCaseKey | LinuxKey]: React.ReactNode
+
+export type WindowsKeys = DefaultKeys & {
+	[key in WindowsKey]: React.ReactNode
 }
 
-export type RaspberryKeys = {
-	[key in LowerCaseKey | RaspberryKey]: React.ReactNode
+export type MacKeys = DefaultKeys & {
+	[key in MacKey]: React.ReactNode
+}
+
+export type LinuxKeys = DefaultKeys & {
+	[key in LinuxKey]: React.ReactNode
+}
+
+export type RaspberryKeys = DefaultKeys & {
+	[key in RaspberryKey]: React.ReactNode
 }
 
 export type Keyboards = Readonly<Record<LayoutOS, React.ReactNode>>

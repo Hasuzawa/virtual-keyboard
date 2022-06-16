@@ -18,14 +18,7 @@ const macColor = "#A2AAAD"
 const linuxColor = "#25c725"
 const raspberryColor = "#CD2355"
 
-// const color =
-
 const iconSize = 30
-
-// const iconParams = {
-// 	size: iconSize,
-// 	color: (os: OS, selected: boolean) => selected ? color[os] : defaultColor
-// }
 
 const RawOSButton = (props: OSButtonProps) => {
 	const { os, selected } = props

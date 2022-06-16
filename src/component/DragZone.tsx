@@ -5,7 +5,6 @@ import { useRef, useState } from "react"
 import Keyboard from "./keyboard/Keyboard"
 import SelectOS from "./SelectOS"
 import ColorPicker from "./ColorPicker"
-import { Color } from "../type"
 
 interface DragZoneProps extends StyledComponent {}
 

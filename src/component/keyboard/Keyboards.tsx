@@ -5,7 +5,6 @@ import { linuxKeyboard } from "./LinuxKeyboard"
 import { raspberryKeyboard } from "./RaspberryKeyboard"
 import { Keyboards } from "../../type"
 
-
 const keyboards: Keyboards = {
 	default: defaultKeyboard,
 	windows: windowsKeyboard,
